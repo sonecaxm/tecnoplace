@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tecnoplace - Perfil</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/perfil.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" type="imagex/png" href="img/21c2309b-3afd-46e2-84ca-9c502931a5ff.png">
+    </head>
+    <body>
+        <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+       
+        <!-- NAVBAR -->
+        <header class="main-header">
+            <div class="header-left">
+                <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
+                <div class="logo">Tecnoplace</div>
+            </div>
+         
+            <nav class="topnav">
+                <div class="nav-links">
+                    <a href="#home">Início</a>
+                    <a href="#produtos">Categorias</a>
+                    <a href="#sobre">Meus Anúncios</a>
+                    <a href="#mensagens">Mensagens</a>
+                    <a class="active" href="#perfil">Perfil</a>
+                </div>
+               
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" placeholder="Pesquisar">
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <aside class="sidebar" id="sidebar">
+            <a href="#"><i class="fas fa-home"></i> Home</a>
+            <a href="#"><i class="fas fa-list"></i> Categorias</a>
+            <a href="#"><i class="fas fa-tag"></i> Meus Anúncios</a>
+            <a href="#"><i class="fas fa-envelope"></i> Mensagens</a>
+            <a href="#"><i class="fas fa-user"></i> Minha Conta</a>
+        </aside>
+
+        <main class="main-content">
+            <div class="profile-container">
+                <!-- Cabeçalho do Perfil -->
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <img src="https://via.placeholder.com/150" alt="Foto de Perfil">
+                        <button class="edit-avatar">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="profile-info">
+                        <div class="profile-header-top">
+                            <h1>joao_silva</h1>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">Editar Perfil</button>
+                                <button class="btn-icon"><i class="fas fa-cog"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-value">42</span>
+                                <span class="stat-label">Anúncios</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">1.2k</span>
+                                <span class="stat-label">Seguidores</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">850</span>
+                                <span class="stat-label">Seguindo</span>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-bio">
+                            <h2>João Silva</h2>
+                            <p>Vendedor de produtos de tecnologia</p>
+                            <p>📍 São Paulo, SP</p>
+                            <a href="#" class="website">www.meusite.com.br</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Abas de Navegação -->
+                <div class="profile-tabs">
+                    <button class="tab active">
+                        <i class="fas fa-th"></i>
+                        <span>Anúncios</span>
+                    </button>
+                    <button class="tab">
+                        <i class="fas fa-bookmark"></i>
+                        <span>Salvos</span>
+                    </button>
+                    <button class="tab">
+                        <i class="fas fa-tag"></i>
+                        <span>Marcados</span>
+                    </button>
+                </div>
+
+                <!-- Grid de Anúncios -->
+                <div class="anuncios-grid">
+                    <!-- Anúncio 1 -->
+                    <div class="anuncio-item">
+                        <div class="anuncio-image">
+                            <img src="https://via.placeholder.com/300" alt="Produto">
+                            <div class="anuncio-overlay">
+                                <div class="anuncio-stats">
+                                    <span><i class="fas fa-heart"></i> 245</span>
+                                    <span><i class="fas fa-comment"></i> 32</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="anuncio-info">
+                            <h3>RTX 3080 Ti</h3>
+                            <p class="price">R$ 4.999,00</p>
+                        </div>
+                    </div>
+
+                    <!-- Anúncio 2 -->
+                    <div class="anuncio-item">
+                        <div class="anuncio-image">
+                            <img src="https://via.placeholder.com/300" alt="Produto">
+                            <div class="anuncio-overlay">
+                                <div class="anuncio-stats">
+                                    <span><i class="fas fa-heart"></i> 189</span>
+                                    <span><i class="fas fa-comment"></i> 24</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="anuncio-info">
+                            <h3>iPhone 13 Pro</h3>
+                            <p class="price">R$ 7.999,00</p>
+                        </div>
+                    </div>
+
+                    <!-- Anúncio 3 -->
+                    <div class="anuncio-item">
+                        <div class="anuncio-image">
+                            <img src="https://via.placeholder.com/300" alt="Produto">
+                            <div class="anuncio-overlay">
+                                <div class="anuncio-stats">
+                                    <span><i class="fas fa-heart"></i> 156</span>
+                                    <span><i class="fas fa-comment"></i> 18</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="anuncio-info">
+                            <h3>Monitor 4K</h3>
+                            <p class="price">R$ 2.499,00</p>
+                        </div>
+                    </div>
+
+                    <!-- Anúncio 4 -->
+                    <div class="anuncio-item">
+                        <div class="anuncio-image">
+                            <img src="https://via.placeholder.com/300" alt="Produto">
+                            <div class="anuncio-overlay">
+                                <div class="anuncio-stats">
+                                    <span><i class="fas fa-heart"></i> 98</span>
+                                    <span><i class="fas fa-comment"></i> 12</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="anuncio-info">
+                            <h3>Teclado Mecânico</h3>
+                            <p class="price">R$ 599,00</p>
+                        </div>
+                    </div>
+
+                    <!-- Anúncio 5 -->
+                    <div class="anuncio-item">
+                        <div class="anuncio-image">
+                            <img src="https://via.placeholder.com/300" alt="Produto">
+                            <div class="anuncio-overlay">
+                                <div class="anuncio-stats">
+                                    <span><i class="fas fa-heart"></i> 76</span>
+                                    <span><i class="fas fa-comment"></i> 8</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="anuncio-info">
+                            <h3>Mouse Gamer</h3>
+                            <p class="price">R$ 299,00</p>
+                        </div>
+                    </div>
+
+                    <!-- Anúncio 6 -->
+                    <div class="anuncio-item">
+                        <div class="anuncio-image">
+                            <img src="https://via.placeholder.com/300" alt="Produto">
+                            <div class="anuncio-overlay">
+                                <div class="anuncio-stats">
+                                    <span><i class="fas fa-heart"></i> 112</span>
+                                    <span><i class="fas fa-comment"></i> 15</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="anuncio-info">
+                            <h3>Headset Pro</h3>
+                            <p class="price">R$ 899,00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="js/script.js"></script>
+        <script src="js/perfil.js"></script>
+    </body>
+</html> 

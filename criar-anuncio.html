@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Anúncio - TechTrade</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   
+</head>
+<body>
+    <header>
+        <div class="logo"></div>
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <nav class="topnav">
+        <a href="index.html">Voltar para Home</a>
+    </nav>
+
+    <main>
+        <div class="form-container">
+            <h2 style="color: #fff; margin-bottom: 30px; text-align: center;">Criar Novo Anúncio</h2>
+            
+            <form id="anuncioForm">
+                <div class="form-group">
+                    <label>Título do Anúncio</label>
+                    <input type="text" name="titulo" required placeholder="Ex: Placa de Vídeo RTX 3080 10GB">
+                </div>
+
+                <div class="form-group">
+                    <label>Categoria</label>
+                    <select name="categoria" required>
+                        <option value="">Selecione uma categoria</option>
+                        <option value="processadores">Processadores</option>
+                        <option value="placas-video">Placas de Vídeo</option>
+                        <option value="memoria-ram">Memória RAM</option>
+                        <option value="armazenamento">Armazenamento</option>
+                        <option value="placa-mae">Placa-mãe</option>
+                        <option value="fonte">Fonte de Alimentação</option>
+                        <option value="gabinete">Gabinete</option>
+                        <option value="cooler">Cooler/Water Cooler</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Estado do Produto</label>
+                    <select name="estado" required>
+                        <option value="">Selecione o estado</option>
+                        <option value="novo">Novo</option>
+                        <option value="usado-como-novo">Usado - Como novo</option>
+                        <option value="usado-bom">Usado - Bom estado</option>
+                        <option value="usado-regular">Usado - Estado regular</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Preço (R$)</label>
+                    <input type="number" name="preco" required min="0" step="0.01" placeholder="0.00">
+                </div>
+
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea name="descricao" required placeholder="Descreva detalhadamente o produto, incluindo suas características, estado de conservação e informações importantes para o comprador."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Especificações Técnicas</label>
+                    <div class="specs-container">
+                        <div id="specsContainer">
+                            <div class="spec-row">
+                                <input type="text" placeholder="Nome da especificação" class="spec-name">
+                                <input type="text" placeholder="Valor" class="spec-value">
+                            </div>
+                        </div>
+                        <button type="button" class="add-spec-btn" onclick="addSpecRow()">
+                            <i class="fas fa-plus"></i> Adicionar Especificação
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Fotos do Produto</label>
+                    <div class="image-upload" onclick="document.getElementById('imageInput').click()">
+                        <input type="file" id="imageInput" multiple accept="image/*" style="display: none;">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Clique ou arraste imagens aqui</p>
+                        <span style="color: #999; font-size: 14px;">Máximo 5 fotos</span>
+                    </div>
+                    <div class="image-preview" id="imagePreview"></div>
+                </div>
+
+                <button type="submit" class="submit-btn">Publicar Anúncio</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        function addSpecRow() {
+            const container = document.getElementById('specsContainer');
+            const newRow = document.createElement('div');
+            newRow.className = 'spec-row';
+            newRow.innerHTML = `
+                <input type="text" placeholder="Nome da especificação" class="spec-name">
+                <input type="text" placeholder="Valor" class="spec-value">
+            `;
+            container.appendChild(newRow);
+        }
+
+        // Preview de imagens
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+
+        imageInput.addEventListener('change', function(e) {
+            const files = Array.from(e.target.files);
+            
+            files.forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const previewItem = document.createElement('div');
+                        previewItem.className = 'preview-item';
+                        previewItem.innerHTML = `
+                            <img src="${e.target.result}" alt="Preview">
+                            <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        `;
+                        imagePreview.appendChild(previewItem);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        // Envio do formulário
+        document.getElementById('anuncioForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aqui você adicionaria a lógica para enviar os dados do formulário
+            const formData = new FormData(this);
+            console.log('Dados do formulário:', Object.fromEntries(formData));
+            
+            // Exemplo de notificação de sucesso
+            alert('Anúncio criado com sucesso!');
+            // Redirecionar para a página principal
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html> 
