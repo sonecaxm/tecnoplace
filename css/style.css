@@ -167,6 +167,13 @@ header {
   border-left: 4px solid #8c52ff;
 }
 
+.sidebar a i {
+  font-size: 20px;
+  margin-right: 10px;
+  width: 24px;
+  text-align: center;
+}
+
 /* OVERLAY */
 .overlay {
   display: none;
@@ -1333,4 +1340,15 @@ text-align: center;
   max-width: 100%; 
   height: auto;
   border-radius: 8px;
+}
+
+.fa-circle-user {
+  font-size: 28px;
+  color: #8c52ff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.fa-circle-user:hover {
+  color: #a875ff;
 }
