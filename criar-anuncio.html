@@ -1,154 +1,466 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Anúncio - TechTrade</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-   
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Anúncio - Tecnoplace</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" href="https://img.freepik.com/vetores-gratis/vetor-de-icone-de-cerebro-de-conexao-de-tecnologia-de-ia-no-conceito-roxo-de-transformacao-digital_53876-112219.jpg">
+  <style>
+    .anuncio-container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .anuncio-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .anuncio-header h1 {
+      color: #4A00E0;
+      margin-bottom: 10px;
+    }
+
+    .form-section {
+      margin-bottom: 30px;
+    }
+
+    .form-section h3 {
+      color: #4A00E0;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #4A00E0;
+      padding-bottom: 5px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #4A00E0;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .upload-area {
+      border: 2px dashed rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      padding: 40px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .upload-area:hover {
+      border-color: #4A00E0;
+      background: rgba(74, 0, 224, 0.1);
+    }
+
+    .upload-area.dragover {
+      border-color: #4A00E0;
+      background: rgba(74, 0, 224, 0.2);
+    }
+
+    .upload-icon {
+      font-size: 48px;
+      color: #4A00E0;
+      margin-bottom: 15px;
+    }
+
+    .upload-text {
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .upload-hint {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+    }
+
+    .image-preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .image-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 1;
+    }
+
+    .image-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-remove {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: rgba(239, 68, 68, 0.9);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    .btn-criar-anuncio {
+      background: linear-gradient(135deg, #4A00E0, #8B5CF6);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .btn-criar-anuncio:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(74, 0, 224, 0.3);
+    }
+
+    .btn-criar-anuncio:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .price-input {
+      position: relative;
+    }
+
+    .price-input::before {
+      content: 'R$';
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 600;
+    }
+
+    .price-input input {
+      padding-left: 35px;
+    }
+
+    .specs-container {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .spec-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .spec-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .btn-remove-spec {
+      background: #EF4444;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-add-spec {
+      background: #10B981;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .spec-item {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+      
+      .anuncio-container {
+        margin: 10px;
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo"></div>
-        <div class="menu-icon">
-            <i class="fas fa-bars"></i>
+
+  <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+  <!-- NAVBAR -->
+  <header>
+    <div style="display: flex; align-items: center;">
+      <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
+      <div class="logo" style="color: #4A00E0;">
+        <a href="index.html" style="color: inherit; text-decoration: none;">Tecnoplace</a>
+      </div>
+    </div>
+    
+    <div class="topnav">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#categorias">Categorias</a>
+        <a href="meus-anuncios.html" class="active">Meus Anúncios</a>
+        <a href="mensagens.html">Mensagens</a>
+        <a href="login.html">Minha Conta</a>
+      </div>
+          
+      <div class="search-container">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Buscar peças...">
+          <div class="search-btn" onclick="buscarProdutos()">
+            <i class="fas fa-search"></i>
+          </div>
         </div>
-    </header>
-
-    <nav class="topnav">
-        <a href="index.html">Voltar para Home</a>
-    </nav>
-
-    <main>
-        <div class="form-container">
-            <h2 style="color: #fff; margin-bottom: 30px; text-align: center;">Criar Novo Anúncio</h2>
-            
-            <form id="anuncioForm">
-                <div class="form-group">
-                    <label>Título do Anúncio</label>
-                    <input type="text" name="titulo" required placeholder="Ex: Placa de Vídeo RTX 3080 10GB">
-                </div>
-
-                <div class="form-group">
-                    <label>Categoria</label>
-                    <select name="categoria" required>
-                        <option value="">Selecione uma categoria</option>
-                        <option value="processadores">Processadores</option>
-                        <option value="placas-video">Placas de Vídeo</option>
-                        <option value="memoria-ram">Memória RAM</option>
-                        <option value="armazenamento">Armazenamento</option>
-                        <option value="placa-mae">Placa-mãe</option>
-                        <option value="fonte">Fonte de Alimentação</option>
-                        <option value="gabinete">Gabinete</option>
-                        <option value="cooler">Cooler/Water Cooler</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Estado do Produto</label>
-                    <select name="estado" required>
-                        <option value="">Selecione o estado</option>
-                        <option value="novo">Novo</option>
-                        <option value="usado-como-novo">Usado - Como novo</option>
-                        <option value="usado-bom">Usado - Bom estado</option>
-                        <option value="usado-regular">Usado - Estado regular</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Preço (R$)</label>
-                    <input type="number" name="preco" required min="0" step="0.01" placeholder="0.00">
-                </div>
-
-                <div class="form-group">
-                    <label>Descrição</label>
-                    <textarea name="descricao" required placeholder="Descreva detalhadamente o produto, incluindo suas características, estado de conservação e informações importantes para o comprador."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Especificações Técnicas</label>
-                    <div class="specs-container">
-                        <div id="specsContainer">
-                            <div class="spec-row">
-                                <input type="text" placeholder="Nome da especificação" class="spec-name">
-                                <input type="text" placeholder="Valor" class="spec-value">
-                            </div>
-                        </div>
-                        <button type="button" class="add-spec-btn" onclick="addSpecRow()">
-                            <i class="fas fa-plus"></i> Adicionar Especificação
-                        </button>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Fotos do Produto</label>
-                    <div class="image-upload" onclick="document.getElementById('imageInput').click()">
-                        <input type="file" id="imageInput" multiple accept="image/*" style="display: none;">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <p>Clique ou arraste imagens aqui</p>
-                        <span style="color: #999; font-size: 14px;">Máximo 5 fotos</span>
-                    </div>
-                    <div class="image-preview" id="imagePreview"></div>
-                </div>
-
-                <button type="submit" class="submit-btn">Publicar Anúncio</button>
-            </form>
+        <div class="cart-container">
+          <i class="fas fa-shopping-cart" onclick="toggleCart()"></i>
+          <span class="cart-count" id="cartCount">0</span>
         </div>
-    </main>
+        <i class="fas fa-circle-user" onclick="toggleUserMenu()"></i>
+      </div>
+    </div>
+  </header>
 
-    <script>
-        function addSpecRow() {
-            const container = document.getElementById('specsContainer');
-            const newRow = document.createElement('div');
-            newRow.className = 'spec-row';
-            newRow.innerHTML = `
-                <input type="text" placeholder="Nome da especificação" class="spec-name">
-                <input type="text" placeholder="Valor" class="spec-value">
-            `;
-            container.appendChild(newRow);
-        }
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="index.html#categorias"><i class="fas fa-list"></i> Categorias</a>
+    <a href="meus-anuncios.html"><i class="fas fa-tag"></i> Meus Anúncios</a>
+    <a href="mensagens.html"><i class="fas fa-envelope"></i> Mensagens</a>
+    <a href="login.html"><i class="fas fa-user"></i> Minha Conta</a>
+  </div>
 
-        // Preview de imagens
-        const imageInput = document.getElementById('imageInput');
-        const imagePreview = document.getElementById('imagePreview');
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="conta-main">
+    <div class="anuncio-container">
+      <div class="anuncio-header">
+        <h1><i class="fas fa-plus-circle"></i> Criar Novo Anúncio</h1>
+        <p>Anuncie seus produtos e alcance milhares de compradores</p>
+      </div>
 
-        imageInput.addEventListener('change', function(e) {
-            const files = Array.from(e.target.files);
-            
-            files.forEach(file => {
-                if (file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const previewItem = document.createElement('div');
-                        previewItem.className = 'preview-item';
-                        previewItem.innerHTML = `
-                            <img src="${e.target.result}" alt="Preview">
-                            <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        `;
-                        imagePreview.appendChild(previewItem);
-                    }
-                    reader.readAsDataURL(file);
-                }
-            });
-        });
+      <form id="anuncioForm" onsubmit="criarAnuncio(event)">
+        <!-- Informações Básicas -->
+        <div class="form-section">
+          <h3><i class="fas fa-info-circle"></i> Informações Básicas</h3>
+          
+          <div class="form-group">
+            <label for="titulo">Título do Anúncio *</label>
+            <input type="text" id="titulo" name="titulo" placeholder="Ex: Monitor Gamer Samsung 27" required>
+          </div>
 
-        // Envio do formulário
-        document.getElementById('anuncioForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Aqui você adicionaria a lógica para enviar os dados do formulário
-            const formData = new FormData(this);
-            console.log('Dados do formulário:', Object.fromEntries(formData));
-            
-            // Exemplo de notificação de sucesso
-            alert('Anúncio criado com sucesso!');
-            // Redirecionar para a página principal
-            window.location.href = 'index.html';
-        });
-    </script>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="categoria">Categoria *</label>
+              <select id="categoria" name="categoria" required>
+                <option value="">Selecione uma categoria</option>
+                <option value="processadores">Processadores</option>
+                <option value="memoria">Memória RAM</option>
+                <option value="armazenamento">Armazenamento</option>
+                <option value="placas-video">Placas de Vídeo</option>
+                <option value="monitores">Monitores</option>
+                <option value="perifericos">Periféricos</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="marca">Marca</label>
+              <input type="text" id="marca" name="marca" placeholder="Ex: Samsung, NVIDIA, AMD">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="preco">Preço *</label>
+              <div class="price-input">
+                <input type="number" id="preco" name="preco" placeholder="0,00" step="0.01" min="0" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="precoAntigo">Preço Antigo (opcional)</label>
+              <div class="price-input">
+                <input type="number" id="precoAntigo" name="precoAntigo" placeholder="0,00" step="0.01" min="0">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="estoque">Quantidade em Estoque *</label>
+              <input type="number" id="estoque" name="estoque" placeholder="0" min="0" required>
+            </div>
+            <div class="form-group">
+              <label for="tag">Tag do Produto</label>
+              <select id="tag" name="tag">
+                <option value="">Sem tag</option>
+                <option value="Novo">Novo</option>
+                <option value="Promoção">Promoção</option>
+                <option value="Oferta">Oferta</option>
+                <option value="Mais Vendido">Mais Vendido</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Descrição -->
+        <div class="form-section">
+          <h3><i class="fas fa-align-left"></i> Descrição</h3>
+          <div class="form-group">
+            <label for="descricao">Descrição Detalhada *</label>
+            <textarea id="descricao" name="descricao" placeholder="Descreva seu produto em detalhes..." required></textarea>
+          </div>
+        </div>
+
+        <!-- Especificações Técnicas -->
+        <div class="form-section">
+          <h3><i class="fas fa-cogs"></i> Especificações Técnicas</h3>
+          <div class="specs-container" id="specsContainer">
+            <div class="spec-item">
+              <input type="text" placeholder="Ex: Tamanho" class="spec-label">
+              <input type="text" placeholder="Ex: 27 polegadas" class="spec-value">
+              <button type="button" class="btn-remove-spec" onclick="removerEspecificacao(this)">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <button type="button" class="btn-add-spec" onclick="adicionarEspecificacao()">
+            <i class="fas fa-plus"></i> Adicionar Especificação
+          </button>
+        </div>
+
+        <!-- Imagens -->
+        <div class="form-section">
+          <h3><i class="fas fa-images"></i> Imagens do Produto</h3>
+          <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+            <div class="upload-icon">
+              <i class="fas fa-cloud-upload-alt"></i>
+            </div>
+            <div class="upload-text">Clique ou arraste imagens aqui</div>
+            <div class="upload-hint">Formatos aceitos: JPG, PNG, WEBP (máx. 5MB cada)</div>
+          </div>
+          <input type="file" id="fileInput" multiple accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
+          
+          <div class="image-preview" id="imagePreview"></div>
+        </div>
+
+        <button type="submit" class="btn-criar-anuncio" id="submitBtn">
+          <i class="fas fa-plus-circle"></i> Criar Anúncio
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Modal do Carrinho -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h3>Carrinho de Compras</h3>
+        <span class="close-cart" onclick="toggleCart()">&times;</span>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <!-- Itens do carrinho serão carregados aqui -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <strong>Total: R$ <span id="cartTotal">0,00</span></strong>
+        </div>
+        <button class="btn-finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/anuncios.js"></script>
+  
+  <!-- VLibras -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  
 </body>
 </html> 

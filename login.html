@@ -1,62 +1,384 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tecnoplace</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="css/login.css">
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="https://img.freepik.com/vetores-gratis/vetor-de-icone-de-cerebro-de-conexao-de-tecnologia-de-ia-no-conceito-roxo-de-transformacao-digital_53876-112219.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Conta - Tecnoplace</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" href="https://img.freepik.com/vetores-gratis/vetor-de-icone-de-cerebro-de-conexao-de-tecnologia-de-ia-no-conceito-roxo-de-transformacao-digital_53876-112219.jpg">
 </head>
 <body>
-    <div class="container" id="container">
-        <div class="form-container sign-up-container">
-            <form action="#">
-                <h1 class="baleia">Criar Conta</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>ou use seu email para registro</span>
-                <input type="text" placeholder="Nome" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Senha" />
-                <button>Cadastrar</button>
-                
-            </form>
-        </div>
-        <div class="form-container sign-in-container">
-            <form action="index.html">
-                <h1 class="baleia">Entrar</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>ou use sua conta</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Senha" />
-                <a href="#">Esqueceu sua senha?</a>
-                <button>Entrar</button>
-            </form>
-        </div>
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <h1 class="baleia">Bem-vindo de volta!</h1>
-                    <p>Para se manter conectado conosco, faça login com suas informações pessoais</p>
-                    <button class="ghost" id="signIn">Entrar</button>
-                </div>
-                <div class="overlay-panel overlay-right">
-                    <h1 class="baleia">Olá, Amigo!</h1>
-                    <p>Insira seus dados pessoais e comece sua jornada conosco</p>
-                    <button class="ghost" id="signUp">Cadastrar</button>
-                </div>
-            </div>
-        </div>
+
+  <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+  <!-- NAVBAR -->
+  <header>
+    <div style="display: flex; align-items: center;">
+      <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
+      <div class="logo" style="color: #4A00E0;">
+        <a href="index.html" style="color: inherit; text-decoration: none;">Tecnoplace</a>
+      </div>
     </div>
-    <script src="js/login.js"></script>
+    
+    <div class="topnav">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#categorias">Categorias</a>
+        <a href="#anuncios">Meus Anúncios</a>
+        <a href="#mensagens">Mensagens</a>
+        <a class="active" href="conta.html">Minha Conta</a>
+      </div>
+          
+      <div class="search-container">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Buscar peças...">
+          <div class="search-btn" onclick="buscarProdutos()">
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+        <div class="cart-container">
+          <i class="fas fa-shopping-cart" onclick="toggleCart()"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </div>
+        <i class="fas fa-circle-user" onclick="toggleUserMenu()"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="index.html#categorias"><i class="fas fa-list"></i> Categorias</a>
+    <a href="#anuncios"><i class="fas fa-tag"></i> Meus Anúncios</a>
+    <a href="#mensagens"><i class="fas fa-envelope"></i> Mensagens</a>
+    <a href="conta.html"><i class="fas fa-user"></i> Minha Conta</a>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="conta-main">
+    <div class="conta-container">
+      
+      <!-- Seção de Login/Registro (visível quando não logado) -->
+      <div class="auth-section" id="authSection">
+        <div class="auth-tabs">
+          <button class="tab-btn active" onclick="showTab('login')">
+            <i class="fas fa-sign-in-alt"></i> Entrar
+          </button>
+          <button class="tab-btn" onclick="showTab('registro')">
+            <i class="fas fa-user-plus"></i> Registrar
+          </button>
+        </div>
+
+        <!-- Formulário de Login -->
+        <div class="auth-form" id="loginForm">
+          <div class="form-header">
+            <h2><i class="fas fa-sign-in-alt"></i> Entrar na sua conta</h2>
+            <p>Acesse sua conta para gerenciar pedidos e informações</p>
+          </div>
+          
+          <form onsubmit="fazerLogin(event)">
+            <div class="form-group">
+              <label for="loginEmail">
+                <i class="fas fa-envelope"></i> Email
+              </label>
+              <input 
+                type="email" 
+                id="loginEmail" 
+                name="email" 
+                placeholder="Digite seu email"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="loginSenha">
+                <i class="fas fa-lock"></i> Senha
+              </label>
+              <div class="password-input">
+                <input 
+                  type="password" 
+                  id="loginSenha" 
+                  name="senha" 
+                  placeholder="Digite sua senha"
+                  required
+                >
+                <button type="button" class="toggle-password" onclick="togglePassword('loginSenha')">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-options">
+              <label class="checkbox-container">
+                <input type="checkbox" id="lembrarMe">
+                <span class="checkmark"></span>
+                Lembrar de mim
+              </label>
+              <a href="#" class="forgot-password">Esqueci minha senha</a>
+            </div>
+
+            <button type="submit" class="btn-primary">
+              <i class="fas fa-sign-in-alt"></i> Entrar
+            </button>
+          </form>
+
+          <div class="demo-credentials">
+            <h4><i class="fas fa-info-circle"></i> Credenciais de Demonstração</h4>
+            <p><strong>Email:</strong> joao@email.com</p>
+            <p><strong>Senha:</strong> 123456</p>
+          </div>
+        </div>
+
+        <!-- Formulário de Registro -->
+        <div class="auth-form hidden" id="registroForm">
+          <div class="form-header">
+            <h2><i class="fas fa-user-plus"></i> Criar nova conta</h2>
+            <p>Registre-se para começar a comprar no Tecnoplace</p>
+          </div>
+          
+          <form onsubmit="fazerRegistro(event)">
+            <div class="form-group">
+              <label for="registroNome">
+                <i class="fas fa-user"></i> Nome Completo
+              </label>
+              <input 
+                type="text" 
+                id="registroNome" 
+                name="nome" 
+                placeholder="Digite seu nome completo"
+                required
+                minlength="3"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="registroEmail">
+                <i class="fas fa-envelope"></i> Email
+              </label>
+              <input 
+                type="email" 
+                id="registroEmail" 
+                name="email" 
+                placeholder="Digite seu email"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="registroSenha">
+                <i class="fas fa-lock"></i> Senha
+              </label>
+              <div class="password-input">
+                <input 
+                  type="password" 
+                  id="registroSenha" 
+                  name="senha" 
+                  placeholder="Digite sua senha"
+                  required
+                  minlength="6"
+                >
+                <button type="button" class="toggle-password" onclick="togglePassword('registroSenha')">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="password-strength" id="passwordStrength"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="confirmarSenha">
+                <i class="fas fa-lock"></i> Confirmar Senha
+              </label>
+              <div class="password-input">
+                <input 
+                  type="password" 
+                  id="confirmarSenha" 
+                  name="confirmarSenha" 
+                  placeholder="Confirme sua senha"
+                  required
+                  minlength="6"
+                >
+                <button type="button" class="toggle-password" onclick="togglePassword('confirmarSenha')">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-options">
+              <label class="checkbox-container">
+                <input type="checkbox" id="aceitarTermos" required>
+                <span class="checkmark"></span>
+                Aceito os <a href="#" class="link">Termos de Uso</a> e <a href="#" class="link">Política de Privacidade</a>
+              </label>
+            </div>
+
+            <button type="submit" class="btn-primary">
+              <i class="fas fa-user-plus"></i> Criar Conta
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Painel do Usuário (visível quando logado) -->
+      <div class="user-panel hidden" id="userPanel">
+        <div class="panel-header">
+          <div class="user-info">
+            <div class="user-avatar">
+              <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="user-details">
+              <h2 id="userName">Nome do Usuário</h2>
+              <p id="userEmail">email@exemplo.com</p>
+              <span class="user-status">
+                <i class="fas fa-check-circle"></i> Conta Verificada
+              </span>
+            </div>
+          </div>
+          <button class="btn-logout" onclick="fazerLogout()">
+            <i class="fas fa-sign-out-alt"></i> Sair
+          </button>
+        </div>
+
+        <div class="panel-content">
+          <div class="panel-tabs">
+            <button class="panel-tab-btn active" onclick="showPanelTab('perfil')">
+              <i class="fas fa-user"></i> Meu Perfil
+            </button>
+            <button class="panel-tab-btn" onclick="showPanelTab('pedidos')">
+              <i class="fas fa-shopping-bag"></i> Meus Pedidos
+            </button>
+            <button class="panel-tab-btn" onclick="showPanelTab('favoritos')">
+              <i class="fas fa-heart"></i> Favoritos
+            </button>
+            <button class="panel-tab-btn" onclick="showPanelTab('endereco')">
+              <i class="fas fa-map-marker-alt"></i> Endereços
+            </button>
+          </div>
+
+          <!-- Aba Perfil -->
+          <div class="panel-tab-content" id="perfilTab">
+            <div class="profile-section">
+              <h3><i class="fas fa-user-edit"></i> Informações Pessoais</h3>
+              <form onsubmit="atualizarPerfil(event)">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="perfilNome">Nome Completo</label>
+                    <input type="text" id="perfilNome" placeholder="Seu nome completo">
+                  </div>
+                  <div class="form-group">
+                    <label for="perfilEmail">Email</label>
+                    <input type="email" id="perfilEmail" placeholder="Seu email" readonly>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="perfilTelefone">Telefone</label>
+                    <input type="tel" id="perfilTelefone" placeholder="(11) 99999-9999">
+                  </div>
+                  <div class="form-group">
+                    <label for="perfilCpf">CPF</label>
+                    <input type="text" id="perfilCpf" placeholder="000.000.000-00">
+                  </div>
+                </div>
+                <button type="submit" class="btn-secondary">
+                  <i class="fas fa-save"></i> Salvar Alterações
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Aba Pedidos -->
+          <div class="panel-tab-content hidden" id="pedidosTab">
+            <div class="orders-section">
+              <h3><i class="fas fa-shopping-bag"></i> Histórico de Pedidos</h3>
+              <div class="orders-list" id="ordersList">
+                <!-- Pedidos serão carregados dinamicamente -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Aba Favoritos -->
+          <div class="panel-tab-content hidden" id="favoritosTab">
+            <div class="favorites-section">
+              <h3><i class="fas fa-heart"></i> Produtos Favoritos</h3>
+              <div class="favorites-list" id="favoritesList">
+                <div class="empty-state">
+                  <i class="fas fa-heart-broken"></i>
+                  <h4>Nenhum produto favorito</h4>
+                  <p>Adicione produtos aos favoritos para vê-los aqui</p>
+                  <a href="index.html" class="btn-secondary">
+                    <i class="fas fa-shopping-cart"></i> Explorar Produtos
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Aba Endereços -->
+          <div class="panel-tab-content hidden" id="enderecoTab">
+            <div class="address-section">
+              <h3><i class="fas fa-map-marker-alt"></i> Meus Endereços</h3>
+              <div class="address-list" id="addressList">
+                <div class="address-card">
+                  <div class="address-info">
+                    <h4><i class="fas fa-home"></i> Casa</h4>
+                    <p id="userAddress">Rua das Flores, 123<br>São Paulo - SP<br>01234-567</p>
+                  </div>
+                  <div class="address-actions">
+                    <button class="btn-edit" onclick="editarEndereco()">
+                      <i class="fas fa-edit"></i> Editar
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button class="btn-add-address" onclick="adicionarEndereco()">
+                <i class="fas fa-plus"></i> Adicionar Novo Endereço
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal do Carrinho (reutilizado do index.html) -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h3>Carrinho de Compras</h3>
+        <span class="close-cart" onclick="toggleCart()">&times;</span>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <!-- Itens do carrinho serão carregados aqui -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <strong>Total: R$ <span id="cartTotal">0,00</span></strong>
+        </div>
+        <button class="btn-finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/conta.js"></script>
+  
+  <!-- VLibras -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  
 </body>
 </html>
+

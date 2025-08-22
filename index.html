@@ -17,614 +17,312 @@
   <header>
     <div style="display: flex; align-items: center;">
       <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
-      <div class="logo" style="color: #4A00E0;">Tecnoplace </div>
+      <div class="logo" style="color: #4A00E0;">Tecnoplace</div>
     </div>
     
     <div class="topnav">
       <div class="nav-links">
-        <a class="active" href="#home">Home</a>
+        <a class="active" href="index.html">Home</a>
         <a href="#categorias">Categorias</a>
-        <a href="#anuncios">Meus Anúncios</a>
-        <a href="#mensagens">Mensagens</a>
+        <a href="meus-anuncios.html">Meus Anúncios</a>
+        <a href="mensagens.html">Mensagens</a>
         <a href="login.html">Minha Conta</a>
       </div>
           
       <div class="search-container">
         <div class="search-box">
-          <input type="text" placeholder="Buscar peças...">
-          <div class="search-btn">
+          <input type="text" id="searchInput" placeholder="Buscar peças...">
+          <div class="search-btn" onclick="buscarProdutos()">
             <i class="fas fa-search"></i>
           </div>
         </div>
-        <i class="fas fa-circle-user"></i>
+        <div class="cart-container">
+          <i class="fas fa-shopping-cart" onclick="toggleCart()"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </div>
+        <i class="fas fa-circle-user" onclick="toggleUserMenu()"></i>
       </div>
     </div>
-    
   </header>
-  <!-- Banner Promocional Rotativo -->
-<!-- Banner Promocional Automático -->
-<div class="banner-container">
-  <div class="banner-slide active">
-    <img src="img/Black November Ofertas De Novembro Moderno Azul Branco e Preto Banner Mercado Shops .png" alt="Banner 1">
-  </div>
-  <div class="banner-slide">
-    <img src="img/Tecnoplace .png" alt="Banner 2">
-  </div>
-  <div class="banner-slide">
-    <img src="img/op.png" alt="Banner 3">
-  </div>
-</div>
 
-  
-
-  <!-- LINKS + PESQUISA -->
-  
   <!-- SIDEBAR -->
   <div class="sidebar" id="sidebar">
-    <a href="#"><i class="fas fa-home"></i> Home</a>
-    <a href="#"><i class="fas fa-list"></i> Categorias</a>
-    <a href="#"><i class="fas fa-tag"></i> Meus Anúncios</a>
-    <a href="#"><i class="fas fa-envelope"></i> Mensagens</a>
-    <a href="#"><i class="fas fa-user"></i> Minha Conta</a>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="#categorias"><i class="fas fa-list"></i> Categorias</a>
+    <a href="meus-anuncios.html"><i class="fas fa-tag"></i> Meus Anúncios</a>
+    <a href="mensagens.html"><i class="fas fa-envelope"></i> Mensagens</a>
+    <a href="login.html"><i class="fas fa-user"></i> Minha Conta</a>
   </div>
-<!-- Produtos em Promoção -->
-<section class="produtos-destaque">
-  <h2 class="section-title">Monitores em até 70% Off</h2>
-  <div class="produtos-grid">
-    <div class="produto-card">
-      <div class="produto-imagem">
-        <img src="img/teclado logo.png" alt="Produto 1">
-        <div class="produto-tag">Novo</div>
-      </div>
-      <div class="produto-info">
-        <h3>Monitor Gamer Samsung</h3>
-        
-        <div class="vendedor-info">
-          <i class="fas fa-circle-user"></i>
-          <div class="vendedor-detalhes">
-            <span class="vendedor-nome">User</span>
-            
-          </div>
-        </div>
-        <div class="produto-preco">
-          <span class="preco-atual">R$ 899,90</span>
-          <span class="preco-antigo">R$ 1.299,90</span>
-        </div>
-        <div class="produto-acoes">
-          <button class="btn-comprar">Inspecionar</button>
-          <button class="btn-carrinho"><i class="fas fa-shopping-cart"></i></button>
-        </div>
-      </div>
-    </div>
 
-    <div class="produto-card">
-      <div class="produto-imagem">
-        <img src="img/miguel mesmo.png" alt="Produto 2">
-        <div class="produto-tag">Promoção</div>
-      </div>
-      <div class="produto-info">
-        <h3>Teclado Mecânico RGB</h3>
-        
-        <div class="vendedor-info">
-          <i class="fas fa-circle-user"></i>
-          <div class="vendedor-detalhes">
-            <span class="vendedor-nome">User</span>
-            
-          </div>
-        </div>
-        <div class="produto-preco">
-          <span class="preco-atual">R$ 299,90</span>
-          <span class="preco-antigo">R$ 399,90</span>
-        </div>
-        <div class="produto-acoes">
-          <button class="btn-comprar">Inspecionar</button>
-          <button class="btn-carrinho"><i class="fas fa-shopping-cart"></i></button>
-        </div>
-      </div>
+  <!-- Banner Promocional Rotativo -->
+  <div class="banner-container">
+    <div class="banner-slide active">
+      <img src="img/Black November Ofertas De Novembro Moderno Azul Branco e Preto Banner Mercado Shops .png" alt="Banner 1">
     </div>
-
-    <div class="produto-card">
-      <div class="produto-imagem">
-        <img src="img/Intel .png" alt="Produto 3">
-        <div class="produto-tag">Mais Vendido</div>
-      </div>
-      <div class="produto-info">
-        <h3>Mouse Gamer</h3>
-       
-        <div class="vendedor-info">
-          <i class="fas fa-circle-user"></i>
-          <div class="vendedor-detalhes">
-            <span class="vendedor-nome">User</span>
-          
-          </div>
-        </div>
-        <div class="produto-preco">
-          <span class="preco-atual">R$ 199,90</span>
-          <span class="preco-antigo">R$ 249,90</span>
-        </div>
-        <div class="produto-acoes">
-          <button class="btn-comprar">Inspecionar</button>
-          <button class="btn-carrinho"><i class="fas fa-shopping-cart"></i></button>
-        </div>
-      </div>
+    <div class="banner-slide">
+      <img src="img/tazinho.png" alt="Banner 2">
     </div>
-
-    <div class="produto-card">
-      <div class="produto-imagem">
-        <img src="img/processador.png" alt="Produto 4">
-        <div class="produto-tag">Oferta</div>
-      </div>
-      <div class="produto-info">
-        <h3>Headset Gamer 7.1</h3>
-        
-        <div class="vendedor-info">
-          <i class="fas fa-circle-user"></i>
-          <div class="vendedor-detalhes">
-            <span class="vendedor-nome">User</span>
-            
-          </div>
-        </div>
-        <div class="produto-preco">
-          <span class="preco-atual">R$ 159,90</span>
-          <span class="preco-antigo">R$ 229,90</span>
-        </div>
-        <div class="produto-acoes">
-          <button class="btn-comprar">Inspecionar</button>
-          <button class="btn-carrinho"><i class="fas fa-shopping-cart"></i></button>
-        </div>
-      </div>
+    <div class="banner-slide">
+      <img src="img/op.png" alt="Banner 3">
+    </div>
+    <div class="banner-indicators">
+      <span class="indicator active" onclick="currentSlide(1)"></span>
+      <span class="indicator" onclick="currentSlide(2)"></span>
+      <span class="indicator" onclick="currentSlide(3)"></span>
     </div>
   </div>
-</section>
 
-
-<!-- Categorias em destaque -->
-<div class="categorias-section">
-  <h2 class="section-title">Categorias</h2>
-  <div class="categorias-grid">
-    <div class="categoria-card">
-      <i class="fas fa-microchip"></i>
-      <h3>Processadores</h3>
-      <div class="item-count">324 itens</div>
-      <p>AMD, Intel e mais</p>
+  <!-- Produtos em Promoção -->
+  <section class="produtos-destaque" id="promocoes">
+    <h2 class="section-title">Monitores em até 70% Off</h2>
+    <div class="produtos-grid" id="produtosPromocao">
+      <!-- Produtos serão carregados dinamicamente -->
     </div>
-    <div class="categoria-card">
-      <i class="fas fa-memory"></i>
-      <h3>Memória RAM</h3>
-      <div class="item-count">156 itens</div>
-      <p>DDR4, DDR5 e mais</p>
-    </div>
-    <div class="categoria-card">
-      <i class="fas fa-hdd"></i>
-      <h3>Armazenamento</h3>
-      <div class="item-count">278 itens</div>
-      <p>SSDs e HDs</p>
-    </div>
-    <div class="categoria-card">
-      <i class="fas fa-desktop"></i>
-      <h3>Placas de Vídeo</h3>
-      <div class="item-count">198 itens</div>
-      <p>NVIDIA, AMD e mais</p>
-    </div>
-  </div>
- </div>
-
- 
-</div>
-</div>
-
-<!-- Seção de Produtos em Destaque -->
-
-</div>
-
-<!-- Seção de Produtos em Destaque -->
-<section class="produtos-destaque">
-  <h2 class="section-title">Produtos em Destaque</h2>
-  <div class="produtos-grid">
-    <div class="produto-card">
-      <div class="produto-imagem">
-        <img src="img/teclado logo.png" alt="Produto 1">
-        <div class="produto-tag">Novo</div>
-      </div>
-      <div class="produto-info">
-        <h3>Monitor Gamer Samsung</h3>
-        
-        <div class="vendedor-info">
-          <img src="img/Imagem do WhatsApp de 2025-05-13 à(s) 20.27.27_8aaf4308.jpg" alt="foto do vendedor" class="xurubas">
-          <div class="vendedor-detalhes">
-            <span class="vendedor-nome">Jonatas Siqueira</span>
-            <div class="produto-rating">★★★★☆</div>
-          </div>
-        </div>
-        <div class="produto-preco">
-          <span class="preco-atual">R$ 899,90</span>
-          <span class="preco-antigo">R$ 1.299,90</span>
-        </div>
-        <div class="produto-acoes">
-          <button class="btn-comprar">Inspecionar</button>
-          <button class="btn-carrinho"><i class="fas fa-shopping-cart"></i></button>
-        </div>
-      </div>
-    </div>
-
-    <div class="produto-card">
-      <div class="produto-imagem">
-        <img src="img/miguel mesmo.png" alt="Produto 2">
-        <div class="produto-tag">Promoção</div>
-      </div>
-      <div class="produto-info">
-        <h3>Teclado Mecânico RGB</h3>
-        
-        <div class="vendedor-info">
-          <img src="img/Foto Gabriel.jpg" alt="foto do vendedor" class="xurubas">
-          <div class="vendedor-detalhes">
-            <span class="vendedor-nome">Gabriel Freire</span>
-            <div class="produto-rating">★★★★☆</div>
-          </div>
-        </div>
-        <div class="produto-preco">
-          <span class="preco-atual">R$ 299,90</span>
-          <span class="preco-antigo">R$ 399,90</span>
-        </div>
-        <div class="produto-acoes">
-          <button class="btn-comprar">Inspecionar</button>
-          <button class="btn-carrinho"><i class="fas fa-shopping-cart"></i></button>
-        </div>
-      </div>
-    </div>
-
-    <div class="produto-card">
-      <div class="produto-imagem">
-        <img src="img/Intel .png" alt="Produto 3">
-        <div class="produto-tag">Mais Vendido</div>
-      </div>
-      <div class="produto-info">
-        <h3>Mouse Gamer Profissional</h3>
-       
-        <div class="vendedor-info">
-          <img src="img/Foto Felipe.jpg" alt="foto do vendedor" class="xurubas">
-          <div class="vendedor-detalhes">
-            <span class="vendedor-nome">Felipe Moura Souza</span>
-            <div class="produto-rating">★★★★☆</div>
-          </div>
-        </div>
-        <div class="produto-preco">
-          <span class="preco-atual">R$ 199,90</span>
-          <span class="preco-antigo">R$ 249,90</span>
-        </div>
-        <div class="produto-acoes">
-          <button class="btn-comprar">Inspecionar</button>
-          <button class="btn-carrinho"><i class="fas fa-shopping-cart"></i></button>
-        </div>
-      </div>
-    </div>
-
-    <div class="produto-card">
-      <div class="produto-imagem">
-        <img src="img/processador.png" alt="Produto 4">
-        <div class="produto-tag">Oferta</div>
-      </div>
-      <div class="produto-info">
-        <h3>Headset Gamer 7.1</h3>
-        
-        <div class="vendedor-info">
-          <img src="img/foto Plínio.jpg" alt="foto do vendedor" class="xurubas">
-          <div class="vendedor-detalhes">
-            <span class="vendedor-nome">Plínio Sanchez Mendes</span>
-            <div class="produto-rating">★★★★☆</div>
-          </div>
-        </div>
-        <div class="produto-preco">
-          <span class="preco-atual">R$ 159,90</span>
-          <span class="preco-antigo">R$ 229,90</span>
-        </div>
-        <div class="produto-acoes">
-          <button class="btn-comprar">Inspecionar</button>
-          <button class="btn-carrinho"><i class="fas fa-shopping-cart"></i></button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- seção das marcas parceiras -->
-
-
-   
-
-<!-- seção das marcas parceiras -->
-<div class="marcas-section">
-  <h2 class="section-title">Marcas que aceitamos</h2>
-  <div class="marcas-slider">
-    <div class="marca-item">
-      <img src="img/icons8-samsung-480.png" alt="Samsung">
-    </div>
-    <div class="marca-item">
-      <img src="img/nvidia renovado.png" alt="Nvidia" >
-    </div>
-    <div class="marca-item">
-      <img src="img/AMD RENOVADO .png" alt="AMD" ">
-    </div>
-    <div class="marca-item">
-      <img src="img/intel logo.png" alt="Intel" ">
-    </div>
-    <div class="marca-item">
-      <img src="img/razer logo.png" alt="Razer">
-    </div>
-  </div>
-</div>
-<!-- Seção de Newsletter -->
-<section class="newsletter-section">
-  <section class="newsletter-content">
-    <h2>Fique por dentro das novidades </h2>
-    <p>Receba ofertas exclusivas e novidades em primeira mão</p>
-    <form class="newsletter-form">
-      <input type="email" placeholder="Digite seu email">
-      <button type="submit">Inscreva-se</button>
-    </form>
   </section>
-</section>
-<!-- Seção de Diferenciais -->
-<div class="diferenciais-section">
-   
-  <div class="diferencial-item">
-    <i class="fas fa-shield-alt"></i>
-    <h3>Compra segura</h3>
-    <p>Pagamento 100% seguro</p>
+
+  <!-- Categorias em destaque -->
+  <div class="categorias-section" id="categorias">
+    <h2 class="section-title">Categorias</h2>
+    <div class="categorias-grid">
+      <div class="categoria-card" onclick="filtrarPorCategoria('processadores')">
+        <i class="fas fa-microchip"></i>
+        <h3>Processadores</h3>
+        <div class="item-count">324 itens</div>
+        <p>AMD, Intel e mais</p>
+      </div>
+      <div class="categoria-card" onclick="filtrarPorCategoria('memoria')">
+        <i class="fas fa-memory"></i>
+        <h3>Memória RAM</h3>
+        <div class="item-count">156 itens</div>
+        <p>DDR4, DDR5 e mais</p>
+      </div>
+      <div class="categoria-card" onclick="filtrarPorCategoria('armazenamento')">
+        <i class="fas fa-hdd"></i>
+        <h3>Armazenamento</h3>
+        <div class="item-count">278 itens</div>
+        <p>SSDs e HDs</p>
+      </div>
+      <div class="categoria-card" onclick="filtrarPorCategoria('placas-video')">
+        <i class="fas fa-desktop"></i>
+        <h3>Placas de Vídeo</h3>
+        <div class="item-count">198 itens</div>
+        <p>NVIDIA, AMD e mais</p>
+      </div>
+    </div>
   </div>
-  <div class="diferencial-item">
-    <i class="fas fa-headset"></i>
-    <h3>Suporte 24/7</h3>
-    <p>Atendimento especializado</p>
+
+  <!-- Seção de Produtos em Destaque -->
+  <section class="produtos-destaque">
+    <h2 class="section-title">Produtos em Destaque</h2>
+    <div class="produtos-grid" id="produtosDestaque">
+      <!-- Produtos serão carregados dinamicamente -->
+    </div>
+  </section>
+
+  <!-- Seção de Feedbacks -->
+  <div class="feedbacks-section">
+    <h2 class="section-title">O que nossos clientes dizem</h2>
+    <div class="feedbacks-slider">
+      <div class="feedback-item">
+        <div class="feedback-avatar">
+          <img src="img/Foto Felipe.jpg" alt="Felipe">
+        </div>
+        <div class="feedback-content">
+          <div class="feedback-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="feedback-text">"Comprei meu processador aqui e foi uma experiência incrível! Entrega rápida e produto em perfeito estado. Recomendo muito!"</p>
+          <h4 class="feedback-name">Felipe Moura</h4>
+          <span class="feedback-location">São Paulo, SP</span>
+        </div>
+      </div>
+      
+      <div class="feedback-item">
+        <div class="feedback-avatar">
+          <img src="img/Foto Gabriel.jpg" alt="Gabriel">
+        </div>
+        <div class="feedback-content">
+          <div class="feedback-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="feedback-text">"Melhor marketplace de tecnologia que já usei! Preços justos e vendedores confiáveis. Já montei meu PC todo aqui."</p>
+          <h4 class="feedback-name">Gabriel Freire</h4>
+          <span class="feedback-location">Rio de Janeiro, RJ</span>
+        </div>
+      </div>
+      
+      <div class="feedback-item">
+        <div class="feedback-avatar">
+          <img src="img/foto Plínio.jpg" alt="Plínio">
+        </div>
+        <div class="feedback-content">
+          <div class="feedback-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="feedback-text">"Suporte excelente e produtos de qualidade! Consegui encontrar peças raras que não achava em lugar nenhum."</p>
+          <h4 class="feedback-name">Plínio Sanchez</h4>
+          <span class="feedback-location">Belo Horizonte, MG</span>
+        </div>
+      </div>
+      
+      <div class="feedback-item">
+        <div class="feedback-avatar">
+          <img src="img/nikole.webp" alt="Nikole">
+        </div>
+        <div class="feedback-content">
+          <div class="feedback-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="feedback-text">"Interface muito intuitiva e segura! Comprei minha placa de vídeo e o processo foi super tranquilo. 5 estrelas!"</p>
+          <h4 class="feedback-name">Deputada Nikole</h4>
+          <span class="feedback-location">Brasília, DF</span>
+        </div>
+      </div>
+      
+      <div class="feedback-item">
+        <div class="feedback-avatar">
+          <img src="img/miguel mesmo.png" alt="Miguel">
+        </div>
+        <div class="feedback-content">
+          <div class="feedback-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="feedback-text">"Frete grátis e entrega no mesmo dia! Vendedor muito atencioso e produto exatamente como anunciado. Top demais!"</p>
+          <h4 class="feedback-name">Miguel Silva</h4>
+          <span class="feedback-location">Curitiba, PR</span>
+        </div>
+      </div>
+    </div>
   </div>
- 
+
+  <!-- Seção de Newsletter -->
+  <section class="newsletter-section">
+    <div class="newsletter-content">
+      <h2>Fique por dentro das novidades</h2>
+      <p>Receba ofertas exclusivas e novidades em primeira mão</p>
+      <form class="newsletter-form" onsubmit="inscreverNewsletter(event)">
+        <input type="email" id="emailNewsletter" placeholder="Digite seu email" required>
+        <button type="submit">Inscreva-se</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Seção de Diferenciais -->
+  <div class="diferenciais-section">
+    <div class="diferencial-item">
+      <i class="fas fa-shield-alt"></i>
+      <h3>Compra segura</h3>
+      <p>Pagamento 100% seguro</p>
+    </div>
+    <div class="diferencial-item">
+      <i class="fas fa-headset"></i>
+      <h3>Suporte 24/7</h3>
+      <p>Atendimento especializado</p>
+    </div>
+    <div class="diferencial-item">
+      <i class="fas fa-truck"></i>
+      <h3>Entrega rápida</h3>
+      <p>Frete grátis acima de R$ 200</p>
+    </div>
   </div>
-</div>
 
+  <!-- Modal do Carrinho -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h3>Carrinho de Compras</h3>
+        <span class="close-cart" onclick="toggleCart()">&times;</span>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <!-- Itens do carrinho serão carregados aqui -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <strong>Total: R$ <span id="cartTotal">0,00</span></strong>
+        </div>
+        <button class="btn-finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
 
-<style>
-.promocoes-dia { /*de fundo*/
-  padding: 20px;
-  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
-  margin: 1px 0;
-}
+  <!-- Modal de Produto -->
+  <div class="product-modal" id="productModal">
+    <div class="product-modal-content">
+      <span class="close-modal" onclick="closeProductModal()">&times;</span>
+      <div class="product-modal-body" id="productModalBody">
+        <!-- Conteúdo do produto será carregado aqui -->
+      </div>
+    </div>
+  </div>
 
-.titulo-promocao {
-  color: white; 
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 30px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-}
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Sobre o Tecnoplace</h3>
+        <p>Marketplace especializado em peças de computador e tecnologia. Conectamos vendedores e compradores de forma segura e confiável.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Links Úteis</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#categorias">Categorias</a></li>
+          <li><a href="#sobre">Sobre Nós</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contato</h3>
+        <p><i class="fas fa-envelope"></i> tecnoplaceoficialbr@gmail.com</p>
+        <p><i class="fas fa-phone"></i> (xx) xxxx-xxxx</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Tecnoplace. Todos os direitos reservados.</p>
+    </div>
+  </footer>
 
-.carrossel-promocoes {
-  display: flex;
-  overflow-x: auto;
-  gap: 20px;
-  padding: 20px 0;
-  scroll-behavior: smooth;
-}
-
-.produto-promo {
-  min-width: 280px;
-  background: rgba(26, 26, 26, 0.7);
-  border-radius: 12px;
-  padding: 15px;
-  position: relative;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.produto-promo:hover {
-  transform: translateY(-5px);
-}
-
-.tag-promo {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #5126e0;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-weight: bold;
-  font-size: 18px;
-  box-shadow: 0 4px 15px rgba(140, 82, 255, 0.3);
-}
-
-.produto-promo img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-.info-produto {
-  padding: 10px 0;
-}
-
-.info-produto h3 {
-  margin: 0 0 10px 0;
-  font-size: 18px;
-  color: white;
-}
-
-.precos {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 10px 0;
-}
-
-.preco-novo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #4A00E0;
-}
-
-.preco-antigo {
-  font-size: 16px;
-  color: #999;
-  text-decoration: line-through;
-}
-
-.btn-promo {
-  width: 100%;
-  padding: 12px;
-  background: #4A00E0;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  box-shadow: 0 4px 15px rgba(140, 82, 255, 0.3);
-}
-
-.btn-promo:hover {
-  background: #3a00b0;
-}
-
-/* Estilização da barra de rolagem */
-.carrossel-promocoes::-webkit-scrollbar {
-  height: 8px;
-}
-
-.carrossel-promocoes::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.1);
-  border-radius: 4px;
-}
-
-.carrossel-promocoes::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.3);
-  border-radius: 4px;
-}
-
-.carrossel-promocoes::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,0.5);
-}
-
-.search-container {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.search-box {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-right: 15px;
-}
-
-.search-btn {
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-}
-
-.xurubas {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.topnav {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-}
-</style>
-
-  <script>
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-
-    function toggleSidebar() {
-      const isActive = sidebar.classList.contains('active');
-      sidebar.classList.toggle('active');
-      overlay.classList.toggle('active', !isActive);
-    }
-
-    function closeSidebar() {
-      sidebar.classList.remove('active');
-      overlay.classList.remove('active');
-    }
-    
-  </script>
-  <script>
-    const slides = document.querySelectorAll('.banner-slide');
-    let current = 0;
-
-    setInterval(() => {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }, 4000);
-  </script>
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
   <script src="js/script.js"></script>
   
-</body>
-<footer>
-  <div class="footer-content">
-    <div class="footer-section">
-      <h3>Sobre o Tecnoplace</h3>
-      <p>Marketplace especializado em compra e venda de peças de computador, conectando entusiastas e profissionais de tecnologia.</p>
-      <div class="social-links">
-        <a href="#" style="text-decoration: none;"><i class="fab fa-facebook"></i></a>
-        <a href="#" style="text-decoration: none;"><i class="fab fa-instagram"></i></a>
-        <a href="#"style="text-decoration: none;"><i class="fab fa-twitter"></i></a>
-        <a href="#"style="text-decoration: none;"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-
-    <div class="footer-section">
-      <h3>Links Úteis</h3>
-      <ul class="footer-links">
-        <li><a href="#">Como Vender</a></li>
-        <li><a href="#">Dicas de Segurança</a></li>
-        <li><a href="#">Política de Garantia</a></li>
-        <li><a href="#">Termos de Uso</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-section">
-      <h3>Contato</h3>
-      <ul class="footer-links">
-        <li><a href="#">Suporte</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Denunciar Problema</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-section">
-      <h3>Newsletter</h3>
-      <p>Receba novidades e ofertas exclusivas!</p>
-      <div class="newsletter-footer">
-        <input type="email" placeholder="Seu melhor e-mail">
-        <button>Inscreva-se</button>
-      </div>
-    </div>
-    
-  </div>
- 
-
   
-    <p class="footer-bottom">&copy; 2024 Jonatas Produções - Todos os direitos reservados</p>
+  <!-- VLibras -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
   </div>
-</footer>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
-</script>
+  </script>
+  
+</body>
 </html>
+

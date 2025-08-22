@@ -1,0 +1,597 @@
+[1mdiff --git a/.github/workflows/deploy.yml b/.github/workflows/deploy.yml[m
+[1mindex a484d16..0519ecb 100644[m
+[1m--- a/.github/workflows/deploy.yml[m
+[1m+++ b/.github/workflows/deploy.yml[m
+[36m@@ -1,17 +1 @@[m
+[31m-name: Deploy to GitHub Pages[m
+[31m-[m
+[31m-on:[m
+[31m-  push:[m
+[31m-    branches:[m
+[31m-      - main[m
+[31m-[m
+[31m-jobs:[m
+[31m-  deploy:[m
+[31m-    runs-on: ubuntu-latest[m
+[31m-    steps:[m
+[31m-      - uses: actions/checkout@v2[m
+[31m-      - name: Deploy to GitHub Pages[m
+[31m-        uses: peaceiris/actions-gh-pages@v3[m
+[31m-        with:[m
+[31m-          github_token: ${{ secrets.GITHUB_TOKEN }}[m
+[31m-          publish_dir: . [m
+\ No newline at end of file[m
+[32m+[m[41m [m
+\ No newline at end of file[m
+[1mdiff --git "a/Cria\303\247\303\243o do anuncio/criar-anuncio.html" "b/Cria\303\247\303\243o do anuncio/criar-anuncio.html"[m
+[1mdeleted file mode 100644[m
+[1mindex 372a135..0000000[m
+[1m--- "a/Cria\303\247\303\243o do anuncio/criar-anuncio.html"[m	
+[1m+++ /dev/null[m
+[36m@@ -1,135 +0,0 @@[m
+[31m-<!DOCTYPE html>[m
+[31m-<html lang="pt-BR">[m
+[31m-<head>[m
+[31m-    <meta charset="UTF-8">[m
+[31m-    <meta name="viewport" content="width=device-width, initial-scale=1.0">[m
+[31m-    <title>Tecnoplace</title>[m
+[31m-    <head>[m
+[31m-        <meta charset="UTF-8">[m
+[31m-        <title>TECNOPLACE</title>[m
+[31m-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">[m
+[31m-        <link rel="stylesheet" href="css/style.css">[m
+[31m-        <link rel="preconnect" href="https://fonts.googleapis.com">[m
+[31m-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>[m
+[31m-      <link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Anta&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Kaushan+Script&family=Qwitcher+Grypen:wght@400;700&family=Share+Tech&family=Share+Tech+Mono&family=Spicy+Rice&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">[m
+[31m-      <script src="https://kit.fontawesome.com/69d1b1fbeb.js" crossorigin="anonymous"></script>[m
+[31m-      <link rel="shortcut icon" type="imagex/png" href="img/21c2309b-3afd-46e2-84ca-9c502931a5ff.png">[m
+[31m-       [m
+[31m-      </head>[m
+[31m-      <body>[m
+[31m-       [m
+[31m-        <div class="overlay" id="overlay" onclick="closeSidebar()"></div>[m
+[31m-       [m
+[31m-        <!-- NAVBAR -->[m
+[31m-        <header>[m
+[31m-          <div style="display: flex; align-items: center;">[m
+[31m-            <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>[m
+[31m-            <div class="logo" style="color: #4A00E0;">Tecnoplace</div>[m
+[31m-           [m
+[31m-          </div>[m
+[31m-         [m
+[31m-          <div class="topnav">[m
+[31m-            <div class="nav-links">[m
+[31m-              <a class="active" href="#home">Início</a>[m
+[31m-              <a href="#produtos">Sobre Nós</a>[m
+[31m-              <a href="#sobre">Quero Vender</a>[m
+[31m-              <a href="#contato">Contato</a>[m
+[31m-             [m
+[31m-            </div>[m
+[31m-               [m
+[31m-            <div class="search-container">[m
+[31m-              <div class="search-box">[m
+[31m-                <input type="text" placeholder="Pesquisar">[m
+[31m-                <div class="search-btn">[m
+[31m-                  <i class="fas fa-search"></i>[m
+[31m-                </div>[m
+[31m-              </div>[m
+[31m-            </div>[m
+[31m-          </div>[m
+[31m-        </header>[m
+[31m-        <nav class="topnav">[m
+[31m-            <a href="index.html">Voltar para Home</a>[m
+[31m-        </nav>[m
+[31m-    [m
+[31m-        <main>[m
+[31m-            <div class="form-container">[m
+[31m-                <h2 style="color: #fff; margin-bottom: 30px; text-align: center;">Criar Novo Anúncio</h2>[m
+[31m-                [m
+[31m-                <form id="anuncioForm">[m
+[31m-                    <div class="form-group">[m
+[31m-                        <label>Título do Anúncio</label>[m
+[31m-                        <input type="text" name="titulo" required placeholder="Ex: Placa de Vídeo RTX 3080 10GB">[m
+[31m-                    </div>[m
+[31m-    [m
+[31m-                    <div class="form-group">[m
+[31m-                        <label>Categoria</label>[m
+[31m-                        <select name="categoria" required>[m
+[31m-                            <option value="">Selecione uma categoria</option>[m
+[31m-                            <option value="processadores">Processadores</option>[m
+[31m-                            <option value="placas-video">Placas de Vídeo</option>[m
+[31m-                            <option value="memoria-ram">Memória RAM</option>[m
+[31m-                            <option value="armazenamento">Armazenamento</option>[m
+[31m-                            <option value="placa-mae">Placa-mãe</option>[m
+[31m-                            <option value="fonte">Fonte de Alimentação</option>[m
+[31m-                            <option value="gabinete">Gabinete</option>[m
+[31m-                            <option value="cooler">Cooler/Water Cooler</option>[m
+[31m-                        </select>[m
+[31m-                    </div>[m
+[31m-    [m
+[31m-                    <div class="form-group">[m
+[31m-                        <label>Estado do Produto</label>[m
+[31m-                        <select name="estado" required>[m
+[31m-                            <option value="">Selecione o estado</option>[m
+[31m-                            <option value="novo">Novo</option>[m
+[31m-                            <option value="usado-como-novo">Usado - Como novo</option>[m
+[31m-                            <option value="usado-bom">Usado - Bom estado</option>[m
+[31m-                            <option value="usado-regular">Usado - Estado regular</option>[m
+[31m-                        </select>[m
+[31m-                    </div>[m
+[31m-    [m
+[31m-                    <div class="form-group">[m
+[31m-                        <label>Preço (R$)</label>[m
+[31m-                        <input type="number" name="preco" required min="0" step="0.01" placeholder="0.00">[m
+[31m-                    </div>[m
+[31m-    [m
+[31m-                    <div class="form-group">[m
+[31m-                        <label>Descrição</label>[m
+[31m-                        <textarea name="descricao" required placeholder="Descreva detalhadamente o produto, incluindo suas características, estado de conservação e informações importantes para o comprador."></textarea>[m
+[31m-                    </div>[m
+[31m-    [m
+[31m-                    <div class="form-group">[m
+[31m-                        <label>Especificações Técnicas</label>[m
+[31m-                        <div class="specs-container">[m
+[31m-                            <div id="specsContainer">[m
+[31m-                                <div class="spec-row">[m
+[31m-                                    <input type="text" placeholder="Nome da especificação" class="spec-name">[m
+[31m-                                    <input type="text" placeholder="Valor" class="spec-value">[m
+[31m-                                </div>[m
+[31m-                            </div>[m
+[31m-                            <button type="button" class="add-spec-btn" onclick="addSpecRow()">[m
+[31m-                                <i class="fas fa-plus"></i> Adicionar Especificação[m
+[31m-                            </button>[m
+[31m-                        </div>[m
+[31m-                    </div>[m
+[31m-    [m
+[31m-                    <div class="form-group">[m
+[31m-                        <label>Fotos do Produto</label>[m
+[31m-                        <div class="image-upload" onclick="document.getElementById('imageInput').click()">[m
+[31m-                            <input type="file" id="imageInput" multiple accept="image/*" style="display: none;">[m
+[31m-                            <i class="fas fa-cloud-upload-alt"></i>[m
+[31m-                            <p>Clique ou arraste imagens aqui</p>[m
+[31m-                            <span style="color: #999; font-size: 14px;">Máximo 5 fotos</span>[m
+[31m-                        </div>[m
+[31m-                        <div class="image-preview" id="imagePreview"></div>[m
+[31m-                    </div>[m
+[31m-    [m
+[31m-                    <button type="submit" class="submit-btn">Publicar Anúncio</button>[m
+[31m-                </form>[m
+[31m-            </div>[m
+[31m-        </main>[m
+[31m-    [m
+[31m-       [m
+[31m-        [m
+[31m-        [m
+[31m-</body>[m
+[31m-</html>[m
+\ No newline at end of file[m
+[1mdiff --git "a/Cria\303\247\303\243o do anuncio/css/mensagens.css" "b/Cria\303\247\303\243o do anuncio/css/mensagens.css"[m
+[1mdeleted file mode 100644[m
+[1mindex 062d679..0000000[m
+[1m--- "a/Cria\303\247\303\243o do anuncio/css/mensagens.css"[m	
+[1m+++ /dev/null[m
+[36m@@ -1,316 +0,0 @@[m
+[31m-/* Container Principal */[m
+[31m-.messages-container {[m
+[31m-    display: grid;[m
+[31m-    grid-template-columns: 300px 1fr;[m
+[31m-    gap: 1rem;[m
+[31m-    height: calc(100vh - 80px);[m
+[31m-    background-color: white;[m
+[31m-    border-radius: 10px;[m
+[31m-    box-shadow: var(--shadow);[m
+[31m-    overflow: hidden;[m
+[31m-}[m
+[31m-[m
+[31m-/* Lista de Conversas */[m
+[31m-.conversations-list {[m
+[31m-    border-right: 1px solid var(--border-color);[m
+[31m-    display: flex;[m
+[31m-    flex-direction: column;[m
+[31m-}[m
+[31m-[m
+[31m-.conversations-header {[m
+[31m-    padding: 1rem;[m
+[31m-    border-bottom: 1px solid var(--border-color);[m
+[31m-}[m
+[31m-[m
+[31m-.conversations-header h2 {[m
+[31m-    margin-bottom: 1rem;[m
+[31m-    color: var(--text-color);[m
+[31m-    font-size: 1.2rem;[m
+[31m-}[m
+[31m-[m
+[31m-.search-conversations {[m
+[31m-    position: relative;[m
+[31m-}[m
+[31m-[m
+[31m-.search-conversations input {[m
+[31m-    width: 100%;[m
+[31m-    padding: 0.5rem 2rem 0.5rem 1rem;[m
+[31m-    border: 1px solid var(--border-color);[m
+[31m-    border-radius: 20px;[m
+[31m-    font-size: 0.9rem;[m
+[31m-}[m
+[31m-[m
+[31m-.search-conversations i {[m
+[31m-    position: absolute;[m
+[31m-    right: 1rem;[m
+[31m-    top: 50%;[m
+[31m-    transform: translateY(-50%);[m
+[31m-    color: var(--secondary-color);[m
+[31m-}[m
+[31m-[m
+[31m-.conversation-item {[m
+[31m-    display: flex;[m
+[31m-    gap: 1rem;[m
+[31m-    padding: 1rem;[m
+[31m-    cursor: pointer;[m
+[31m-    transition: background-color 0.3s;[m
+[31m-    border-bottom: 1px solid var(--border-color);[m
+[31m-}[m
+[31m-[m
+[31m-.conversation-item:hover {[m
+[31m-    background-color: var(--background-color);[m
+[31m-}[m
+[31m-[m
+[31m-.conversation-item.active {[m
+[31m-    background-color: var(--background-color);[m
+[31m-}[m
+[31m-[m
+[31m-.conversation-avatar {[m
+[31m-    position: relative;[m
+[31m-}[m
+[31m-[m
+[31m-.conversation-avatar img {[m
+[31m-    width: 40px;[m
+[31m-    height: 40px;[m
+[31m-    border-radius: 50%;[m
+[31m-    object-fit: cover;[m
+[31m-}[m
+[31m-[m
+[31m-.status {[m
+[31m-    position: absolute;[m
+[31m-    bottom: 0;[m
+[31m-    right: 0;[m
+[31m-    width: 10px;[m
+[31m-    height: 10px;[m
+[31m-    border-radius: 50%;[m
+[31m-    border: 2px solid white;[m
+[31m-}[m
+[31m-[m
+[31m-.status.online {[m
+[31m-    background-color: var(--success-color);[m
+[31m-}[m
+[31m-[m
+[31m-.status.offline {[m
+[31m-    background-color: var(--secondary-color);[m
+[31m-}[m
+[31m-[m
+[31m-.status.away {[m
+[31m-    background-color: #FFC107;[m
+[31m-}[m
+[31m-[m
+[31m-.conversation-info {[m
+[31m-    flex: 1;[m
+[31m-    min-width: 0;[m
+[31m-}[m
+[31m-[m
+[31m-.conversation-header {[m
+[31m-    display: flex;[m
+[31m-    justify-content: space-between;[m
+[31m-    align-items: baseline;[m
+[31m-    margin-bottom: 0.25rem;[m
+[31m-}[m
+[31m-[m
+[31m-.conversation-header h3 {[m
+[31m-    font-size: 0.9rem;[m
+[31m-    font-weight: 600;[m
+[31m-    color: var(--text-color);[m
+[31m-}[m
+[31m-[m
+[31m-.time {[m
+[31m-    font-size: 0.8rem;[m
+[31m-    color: var(--secondary-color);[m
+[31m-}[m
+[31m-[m
+[31m-.last-message {[m
+[31m-    font-size: 0.85rem;[m
+[31m-    color: var(--secondary-color);[m
+[31m-    white-space: nowrap;[m
+[31m-    overflow: hidden;[m
+[31m-    text-overflow: ellipsis;[m
+[31m-}[m
+[31m-[m
+[31m-/* Área de Chat */[m
+[31m-.chat-area {[m
+[31m-    display: flex;[m
+[31m-    flex-direction: column;[m
+[31m-    height: 100%;[m
+[31m-}[m
+[31m-[m
+[31m-.chat-header {[m
+[31m-    padding: 1rem;[m
+[31m-    border-bottom: 1px solid var(--border-color);[m
+[31m-    display: flex;[m
+[31m-    justify-content: space-between;[m
+[31m-    align-items: center;[m
+[31m-}[m
+[31m-[m
+[31m-.chat-user-info {[m
+[31m-    display: flex;[m
+[31m-    align-items: center;[m
+[31m-    gap: 1rem;[m
+[31m-}[m
+[31m-[m
+[31m-.chat-user-info img {[m
+[31m-    width: 40px;[m
+[31m-    height: 40px;[m
+[31m-    border-radius: 50%;[m
+[31m-    object-fit: cover;[m
+[31m-}[m
+[31m-[m
+[31m-.chat-user-info h3 {[m
+[31m-    font-size: 1rem;[m
+[31m-    font-weight: 600;[m
+[31m-    color: var(--text-color);[m
+[31m-}[m
+[31m-[m
+[31m-.status-text {[m
+[31m-    font-size: 0.8rem;[m
+[31m-    color: var(--success-color);[m
+[31m-}[m
+[31m-[m
+[31m-.chat-actions {[m
+[31m-    display: flex;[m
+[31m-    gap: 0.5rem;[m
+[31m-}[m
+[31m-[m
+[31m-.btn-icon {[m
+[31m-    width: 36px;[m
+[31m-    height: 36px;[m
+[31m-    border-radius: 50%;[m
+[31m-    border: none;[m
+[31m-    background: none;[m
+[31m-    color: var(--secondary-color);[m
+[31m-    cursor: pointer;[m
+[31m-    transition: all 0.3s;[m
+[31m-    display: flex;[m
+[31m-    align-items: center;[m
+[31m-    justify-content: center;[m
+[31m-}[m
+[31m-[m
+[31m-.btn-icon:hover {[m
+[31m-    background-color: var(--background-color);[m
+[31m-    color: var(--primary-color);[m
+[31m-}[m
+[31m-[m
+[31m-.chat-messages {[m
+[31m-    flex: 1;[m
+[31m-    padding: 1rem;[m
+[31m-    overflow-y: auto;[m
+[31m-    display: flex;[m
+[31m-    flex-direction: column;[m
+[31m-    gap: 1rem;[m
+[31m-}[m
+[31m-[m
+[31m-.message-date {[m
+[31m-    text-align: center;[m
+[31m-    font-size: 0.8rem;[m
+[31m-    color: var(--secondary-color);[m
+[31m-    margin: 1rem 0;[m
+[31m-}[m
+[31m-[m
+[31m-.message {[m
+[31m-    display: flex;[m
+[31m-    max-width: 70%;[m
+[31m-}[m
+[31m-[m
+[31m-.message.received {[m
+[31m-    align-self: flex-start;[m
+[31m-}[m
+[31m-[m
+[31m-.message.sent {[m
+[31m-    align-self: flex-end;[m
+[31m-}[m
+[31m-[m
+[31m-.message-content {[m
+[31m-    padding: 0.75rem 1rem;[m
+[31m-    border-radius: 10px;[m
+[31m-    position: relative;[m
+[31m-}[m
+[31m-[m
+[31m-.message.received .message-content {[m
+[31m-    background-color: var(--background-color);[m
+[31m-}[m
+[31m-[m
+[31m-.message.sent .message-content {[m
+[31m-    background-color: var(--primary-color);[m
+[31m-    color: white;[m
+[31m-}[m
+[31m-[m
+[31m-.message-time {[m
+[31m-    font-size: 0.7rem;[m
+[31m-    margin-top: 0.25rem;[m
+[31m-    display: block;[m
+[31m-}[m
+[31m-[m
+[31m-.message.sent .message-time {[m
+[31m-    color: rgba(255, 255, 255, 0.8);[m
+[31m-}[m
+[31m-[m
+[31m-.message.received .message-time {[m
+[31m-    color: var(--secondary-color);[m
+[31m-}[m
+[31m-[m
+[31m-.chat-input {[m
+[31m-    padding: 1rem;[m
+[31m-    border-top: 1px solid var(--border-color);[m
+[31m-    display: flex;[m
+[31m-    gap: 0.5rem;[m
+[31m-    align-items: center;[m
+[31m-}[m
+[31m-[m
+[31m-.chat-input input {[m
+[31m-    flex: 1;[m
+[31m-    padding: 0.75rem;[m
+[31m-    border: 1px solid var(--border-color);[m
+[31m-    border-radius: 20px;[m
+[31m-    font-size: 0.9rem;[m
+[31m-}[m
+[31m-[m
+[31m-.chat-input input:focus {[m
+[31m-    outline: none;[m
+[31m-    border-color: var(--primary-color);[m
+[31m-}[m
+[31m-[m
+[31m-.btn-send {[m
+[31m-    width: 40px;[m
+[31m-    height: 40px;[m
+[31m-    border-radius: 50%;[m
+[31m-    border: none;[m
+[31m-    background-color: var(--primary-color);[m
+[31m-    color: white;[m
+[31m-    cursor: pointer;[m
+[31m-    transition: background-color 0.3s;[m
+[31m-    display: flex;[m
+[31m-    align-items: center;[m
+[31m-    justify-content: center;[m
+[31m-}[m
+[31m-[m
+[31m-.btn-send:hover {[m
+[31m-    background-color: var(--primary-hover);[m
+[31m-}[m
+[31m-[m
+[31m-/* Responsividade */[m
+[31m-@media (max-width: 768px) {[m
+[31m-    .messages-container {[m
+[31m-        grid-template-columns: 1fr;[m
+[31m-    }[m
+[31m-[m
+[31m-    .conversations-list {[m
+[31m-        display: none;[m
+[31m-    }[m
+[31m-[m
+[31m-    .conversations-list.active {[m
+[31m-        display: block;[m
+[31m-        position: fixed;[m
+[31m-        top: 80px;[m
+[31m-        left: 0;[m
+[31m-        right: 0;[m
+[31m-        bottom: 0;[m
+[31m-        background-color: white;[m
+[31m-        z-index: 1000;[m
+[31m-    }[m
+[31m-[m
+[31m-    .message {[m
+[31m-        max-width: 85%;[m
+[31m-    }[m
+[31m-} [m
+\ No newline at end of file[m
+[1mdiff --git "a/Cria\303\247\303\243o do anuncio/css/perfil.css" "b/Cria\303\247\303\243o do anuncio/css/perfil.css"[m
+[1mdeleted file mode 100644[m
+[1mindex f8a642d..0000000[m
+[1m--- "a/Cria\303\247\303\243o do anuncio/css/perfil.css"[m	
+[1m+++ /dev/null[m
+[36m@@ -1,270 +0,0 @@[m
+[31m-/* Container Principal */[m
+[31m-.profile-container {[m
+[31m-    max-width: 935px;[m
+[31m-    margin: 0 auto;[m
+[31m-    padding: 2rem 1rem;[m
+[31m-}[m
+[31m-[m
+[31m-/* Cabeçalho do Perfil */[m
+[31m-.profile-header {[m
+[31m-    display: flex;[m
+[31m-    gap: 4rem;[m
+[31m-    margin-bottom: 2rem;[m
+[31m-    padding-bottom: 2rem;[m
+[31m-    border-bottom: 1px solid var(--border-color);[m
+[31m-}[m
+[31m-[m
+[31m-.profile-avatar {[m
+[31m-    position: relative;[m
+[31m-    width: 150px;[m
+[31m-    height: 150px;[m
+[31m-}[m
+[31m-[m
+[31m-.profile-avatar img {[m
+[31m-    width: 100%;[m
+[31m-    height: 100%;[m
+[31m-    border-radius: 50%;[m
+[31m-    object-fit: cover;[m
+[31m-}[m
+[31m-[m
+[31m-.edit-avatar {[m
+[31m-    position: absolute;[m
+[31m-    bottom: 0;[m
+[31m-    right: 0;[m
+[31m-    width: 36px;[m
+[31m-    height: 36px;[m
+[31m-    border-radius: 50%;[m
+[31m-    background-color: var(--primary-color);[m
+[31m-    border: none;[m
+[31m-    color: white;[m
+[31m-    cursor: pointer;[m
+[31m-    display: flex;[m
+[31m-    align-items: center;[m
+[31m-    justify-content: center;[m
+[31m-    transition: background-color 0.3s;[m
+[31m-}[m
+[31m-[m
+[31m-.edit-avatar:hover {[m
+[31m-    background-color: var(--primary-hover);[m
+[31m-}[m
+[31m-[m
+[31m-.profile-info {[m
+[31m-    flex: 1;[m
+[31m-}[m
+[31m-[m
+[31m-.profile-header-top {[m
+[31m-    display: flex;[m
+[31m-    align-items: center;[m
+[31m-    gap: 2rem;[m
+[31m-    margin-bottom: 1.5rem;[m
+[31m-}[m
+[31m-[m
+[31m-.profile-header-top h1 {[m
+[31m-    font-size: 1.5rem;[m
+[31m-    font-weight: 600;[m
+[31m-    color: var(--text-color);[m
+[31m-}[m
+[31m-[m
+[31m-.profile-actions {[m
+[31m-    display: flex;[m
+[31m-    gap: 1rem;[m
+[31m-}[m
+[31m-[m
+[31m-.profile-stats {[m
+[31m-    display: flex;[m
+[31m-    gap: 2rem;[m
+[31m-    margin-bottom: 1.5rem;[m
+[31m-}[m
+[31m-[m
+[31m-.stat {[m
+[31m-    display: flex;[m
+[31m-    flex-direction: column;[m
+[31m-    align-items: center;[m
+[31m-}[m
+[31m-[m
+[31m-.stat-value {[m
+[31m-    font-weight: 600;[m
+[31m-    font-size: 1.1rem;[m
+[31m-    color: var(--text-color);[m
+[31m-}[m
+[31m-[m
+[31m-.stat-label {[m
+[31m-    font-size: 0.9rem;[m
+[31m-    color: var(--secondary-color);[m
+[31m-}[m
+[31m-[m
+[31m-.profile-bio h2 {[m
+[31m-    font-size: 1.1rem;[m
+[31m-    font-weight: 600;[m
+[31m-    margin-bottom: 0.5rem;[m
+[31m-    color: var(--text-color);[m
+[3
