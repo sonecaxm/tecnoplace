@@ -55,13 +55,20 @@ const DATABASE = {
     produtos: [
       {
         id: 1,
-        nome: "teclado mecanico da samsung",
-        categoria: "periféricos",
-        categoriaId: 6,
-        preco: 899.90,
-        precoAntigo: 1299.90,
-        imagem: "img/chique.jpg",
-        tag: "usado",
+        nome: "Monitor Samsung Odyssey 5G",
+        categoria: "Monitores",
+        categoriaId: 5,
+        preco: 300.00,
+        precoAntigo: 489.00,
+        imagem: "img/lets go.jpg",
+        imagensAdicionais: [
+          "img/foto de monitor.jpg",
+          "img/gabinete.jpg",
+          "img/teclado mecanico.jpg",
+          "img/processador.png",
+          "img/Intel .png"
+        ],
+        tag: "novo",
         vendedor: {
           nome: "Jonatas Siqueira",
           foto: "img/jonatas.jpg",
@@ -70,7 +77,7 @@ const DATABASE = {
         },
         descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo est eu est vestibulum viverra. Mauris nulla elit, aliquam vitae.",
         especificacoes: {
-          "Tamanho": "14cm de largura",
+          "Tamanho": "24 polegadas",
           "Resolução": "2560x1440 (QHD)",
           "Taxa de Atualização": "144Hz",
           "Tempo de Resposta": "1ms",
@@ -87,7 +94,11 @@ const DATABASE = {
         categoriaId: 6,
         preco: 299.90,
         precoAntigo: 399.90,
-        imagem: "https://via.placeholder.com/300x300/8B5CF6/FFFFFF?text=Teclado+RGB",
+        imagem: "img/teclado mecanico.jpg",
+        imagensAdicionais: [
+          "img/teclado logo.png",
+          "img/razer logo.png"
+        ],
         tag: "Promoção",
         vendedor: {
           nome: "Gabriel Freire",

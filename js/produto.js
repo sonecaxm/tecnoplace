@@ -382,7 +382,8 @@ function simularRespostaVendedor() {
         'Posso te ajudar com a instalação também.',
         'Temos garantia estendida disponível.',
         'Posso fazer um preço especial para você!',
-        'Esse produto tem excelente custo-benefício.'
+        'Esse produto tem excelente custo-benefício.',
+        'olá tudo bem?.'
     ];
     
     const resposta = respostasAutomaticas[Math.floor(Math.random() * respostasAutomaticas.length)];

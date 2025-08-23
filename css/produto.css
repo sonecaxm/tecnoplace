@@ -796,78 +796,512 @@
     margin-right: -25px;
   }
   
-  /* Responsividade */
-  @media (max-width: 1200px) {
-    .produto-container {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    
-    .chat-section {
-      width: 100%;
-      right: -100%;
-    }
+  /* ===== RESPONSIVIDADE COMPLETA ===== */
+
+/* Tablets grandes (1024px e abaixo) */
+@media (max-width: 1024px) {
+  .produto-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
   }
   
-  @media (max-width: 768px) {
-    .produto-main {
-      padding: 15px;
-    }
-    
-    .produto-section {
-      grid-template-columns: 1fr;
-      gap: 25px;
-      padding: 20px;
-    }
-    
-    .produto-header h1 {
-      font-size: 24px;
-    }
-    
-    .price-current {
-      font-size: 28px;
-    }
-    
-    .action-buttons {
-      flex-direction: column;
-    }
-    
-    .btn-add-cart,
-    .btn-buy-now {
-      min-width: auto;
-    }
-    
-    .vendedor-card {
-      flex-direction: column;
-      text-align: center;
-      gap: 15px;
-    }
-    
-    .vendedor-actions {
-      flex-direction: row;
-      justify-content: center;
-    }
+  .produto-section {
+    gap: 30px;
+    padding: 25px;
   }
   
-  @media (max-width: 480px) {
-    .breadcrumb .container {
-      padding: 0 15px;
-      font-size: 12px;
-    }
-    
-    .produto-section {
-      padding: 15px;
-    }
-    
-    .thumbnail-images {
-      justify-content: center;
-    }
-    
-    .quantity-selector {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-    }
+  .produto-header h1 {
+    font-size: 28px;
   }
+  
+  .price-current {
+    font-size: 32px;
+  }
+  
+  .thumbnail-images {
+    gap: 12px;
+  }
+  
+  .thumbnail {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .chat-section {
+    width: 100%;
+    right: -100%;
+  }
+}
+
+/* Tablets pequenos e celulares grandes (768px e abaixo) */
+@media (max-width: 768px) {
+  .produto-main {
+    padding: 12px;
+  }
+  
+  .produto-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 15px;
+  }
+  
+  .produto-header h1 {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+  
+  .price-current {
+    font-size: 26px;
+  }
+  
+  .price-original {
+    font-size: 18px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .btn-add-cart,
+  .btn-buy-now {
+    min-width: auto;
+    width: 100%;
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+  
+  .vendedor-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+    padding: 20px;
+  }
+  
+  .vendedor-actions {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .btn-contact,
+  .btn-follow {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
+  .thumbnail-images {
+    gap: 8px;
+    justify-content: center;
+  }
+  
+  .thumbnail {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .main-image {
+    aspect-ratio: 1;
+  }
+  
+  .specs-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .spec-item {
+    padding: 15px;
+  }
+  
+  .spec-item h4 {
+    font-size: 16px;
+  }
+  
+  .spec-item p {
+    font-size: 14px;
+  }
+  
+  .quantity-selector {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .quantity-controls {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .quantity-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .quantity-input {
+    width: 60px;
+    height: 40px;
+  }
+}
+
+/* Celulares pequenos (480px e abaixo) */
+@media (max-width: 480px) {
+  .produto-main {
+    padding: 10px;
+  }
+  
+  .breadcrumb .container {
+    padding: 0 10px;
+    font-size: 12px;
+  }
+  
+  .produto-section {
+    padding: 15px;
+    gap: 20px;
+  }
+  
+  .produto-header h1 {
+    font-size: 20px;
+  }
+  
+  .price-current {
+    font-size: 24px;
+  }
+  
+  .price-old {
+    font-size: 16px;
+  }
+  
+  .action-buttons {
+    gap: 12px;
+  }
+  
+  .btn-add-cart,
+  .btn-buy-now {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  .vendedor-card {
+    padding: 15px;
+    gap: 12px;
+  }
+  
+  .vendedor-info h4 {
+    font-size: 16px;
+  }
+  
+  .vendedor-info p {
+    font-size: 13px;
+  }
+  
+  .vendedor-actions {
+    gap: 8px;
+  }
+  
+  .btn-contact,
+  .btn-follow {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+  
+  .thumbnail-images {
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .thumbnail {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .specs-grid {
+    gap: 12px;
+  }
+  
+  .spec-item {
+    padding: 12px;
+  }
+  
+  .spec-item h4 {
+    font-size: 14px;
+  }
+  
+  .spec-item p {
+    font-size: 13px;
+  }
+  
+  .quantity-selector {
+    gap: 8px;
+  }
+  
+  .quantity-controls {
+    gap: 8px;
+  }
+  
+  .quantity-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+  
+  .quantity-input {
+    width: 50px;
+    height: 35px;
+    font-size: 14px;
+  }
+  
+  .image-zoom {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+  
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
+/* Celulares muito pequenos (360px e abaixo) */
+@media (max-width: 360px) {
+  .produto-main {
+    padding: 8px;
+  }
+  
+  .breadcrumb .container {
+    padding: 0 8px;
+    font-size: 11px;
+  }
+  
+  .produto-section {
+    padding: 12px;
+    gap: 15px;
+  }
+  
+  .produto-header h1 {
+    font-size: 18px;
+  }
+  
+  .price-current {
+    font-size: 22px;
+  }
+  
+  .price-old {
+    font-size: 14px;
+  }
+  
+  .action-buttons {
+    gap: 10px;
+  }
+  
+  .btn-add-cart,
+  .btn-buy-now {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  .vendedor-card {
+    padding: 12px;
+    gap: 10px;
+  }
+  
+  .vendedor-info h4 {
+    font-size: 15px;
+  }
+  
+  .vendedor-info p {
+    font-size: 12px;
+  }
+  
+  .vendedor-actions {
+    gap: 6px;
+  }
+  
+  .btn-contact,
+  .btn-follow {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  
+  .thumbnail-images {
+    gap: 6px;
+  }
+  
+  .thumbnail {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .specs-grid {
+    gap: 10px;
+  }
+  
+  .spec-item {
+    padding: 10px;
+  }
+  
+  .spec-item h4 {
+    font-size: 13px;
+  }
+  
+  .spec-item p {
+    font-size: 12px;
+  }
+  
+  .quantity-controls {
+    gap: 6px;
+  }
+  
+  .quantity-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+  
+  .quantity-input {
+    width: 45px;
+    height: 32px;
+    font-size: 13px;
+  }
+  
+  .image-zoom {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+  
+  .nav-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+}
+
+/* Orientação landscape em mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .produto-section {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .produto-header h1 {
+    font-size: 20px;
+  }
+  
+  .price-current {
+    font-size: 24px;
+  }
+  
+  .action-buttons {
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .btn-add-cart,
+  .btn-buy-now {
+    width: auto;
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+  
+  .vendedor-card {
+    flex-direction: row;
+    text-align: left;
+    gap: 10px;
+  }
+  
+  .vendedor-actions {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .thumbnail-images {
+    gap: 8px;
+  }
+  
+  .thumbnail {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Melhorias para touch devices */
+@media (hover: none) and (pointer: coarse) {
+  /* Aumentar área de toque */
+  .btn-add-cart,
+  .btn-buy-now,
+  .btn-contact,
+  .btn-follow,
+  .quantity-btn,
+  .thumbnail,
+  .image-zoom,
+  .nav-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Feedback visual para toque */
+  .btn-add-cart:active,
+  .btn-buy-now:active,
+  .btn-contact:active,
+  .btn-follow:active,
+  .quantity-btn:active,
+  .thumbnail:active,
+  .image-zoom:active,
+  .nav-btn:active {
+    transform: scale(0.98);
+    opacity: 0.8;
+  }
+  
+  /* Melhorar scroll */
+  .thumbnail-images,
+  .specs-grid {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Melhorias para telas de alta resolução */
+@media (min-width: 1200px) {
+  .produto-container {
+    max-width: 1600px;
+  }
+  
+  .produto-section {
+    gap: 50px;
+    padding: 40px;
+  }
+  
+  .produto-header h1 {
+    font-size: 36px;
+  }
+  
+  .price-current {
+    font-size: 40px;
+  }
+  
+  .thumbnail {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .specs-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+  }
+  
+  .spec-item {
+    padding: 25px;
+  }
+  
+  .spec-item h4 {
+    font-size: 20px;
+  }
+  
+  .spec-item p {
+    font-size: 16px;
+  }
+}
   
   

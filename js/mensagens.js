@@ -11,14 +11,14 @@ let conversas = [
     mensagens: [
       {
         id: 1,
-        texto: "Olá! eu sou o Felipe e gosto de Jogar Genshin Impact",
+        texto: "Olá! eu sou felipe tudo bem?",
         hora: "14:25",
         enviada: false,
         lida: true
       },
       {
         id: 2,
-        texto: "Slk nn compensa.",
+        texto: "olá Felipe, tudo sim.",
         hora: "14:28",
         enviada: true,
         lida: true
@@ -98,8 +98,8 @@ let conversas = [
   },
   {
     id: 4,
-    nome: "Deputada Nikole",
-    avatar: "img/nikole.webp",
+    nome: "Danilo passos",
+    avatar: "img/danilo.png",
     ultimaMensagem: "Pode fazer R$ 800,00?",
     hora: "11:30",
     notificacoes: 0,
