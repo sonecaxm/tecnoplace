@@ -125,7 +125,7 @@ const DATABASE = {
         categoriaId: 6,
         preco: 390.90,
         precoAntigo: 559.90,
-        imagem: "img/TAZINHO.png",
+        imagem: "img/tazinho.png",
         tag: "Mais Vendido",
         vendedor: {
           nome: "Felipe Moura Souza",
