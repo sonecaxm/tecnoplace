@@ -129,7 +129,7 @@ const DATABASE = {
         tag: "Mais Vendido",
         vendedor: {
           nome: "Felipe Moura Souza",
-          foto: "img/Foto felipe.jpg",
+          foto: "img/Foto Felipe.jpg",
           rating: 4.7,
           avaliacoes: 156
         },
