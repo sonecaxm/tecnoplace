@@ -158,6 +158,28 @@
     </div>
   </div>
 
+  <!-- Botão de Configuração da API ChatGPT -->
+  <button class="btn-config-api" onclick="abrirConfiguracaoAPI()" title="Configurar API do ChatGPT">
+    <i class="fas fa-cog"></i>
+  </button>
+
+  <!-- Modal de Configuração da API -->
+  <div class="config-modal" id="configModal">
+    <div class="config-modal-content">
+      <h3>🤖 Configurar ChatGPT</h3>
+      <p>Para usar o assistente ChatGPT, você precisa de uma API Key do OpenAI. Insira sua chave abaixo:</p>
+      <input type="password" id="apiKeyInput" placeholder="Cole sua API Key aqui...">
+      <p style="font-size: 14px; color: rgba(255, 255, 255, 0.6);">
+        Você pode obter sua API key gratuitamente em: 
+        <a href="https://platform.openai.com/api-keys" target="_blank" style="color: #4A00E0;">platform.openai.com/api-keys</a>
+      </p>
+      <div class="config-modal-buttons">
+        <button class="btn-salvar" onclick="salvarConfiguracaoAPI()">Salvar</button>
+        <button class="btn-cancelar" onclick="fecharConfiguracaoAPI()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="js/data.js"></script>
   <script src="js/script.js"></script>

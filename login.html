@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minha Conta - Tecnoplace</title>
+  <title>Tecnoplace</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/login.css">
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
         <a href="index.html">Home</a>
         <a href="index.html#categorias">Categorias</a>
         <a href="#anuncios">Meus Anúncios</a>
-        <a href="#mensagens">Mensagens</a>
+        <a href="mensagens.html">Mensagens</a>
         <a class="active" href="conta.html">Minha Conta</a>
       </div>
           
@@ -43,7 +43,10 @@
           <i class="fas fa-shopping-cart" onclick="toggleCart()"></i>
           <span class="cart-count" id="cartCount">0</span>
         </div>
-        <i class="fas fa-circle-user" onclick="toggleUserMenu()"></i>
+        <div class="user-avatar-header" id="userAvatarHeader" onclick="toggleUserMenu()">
+          <img id="userAvatarHeaderImg" src="" alt="Foto do usuário" style="display: none;">
+          <i class="fas fa-circle-user" id="userAvatarHeaderIcon"></i>
+        </div>
       </div>
     </div>
   </header>
@@ -225,8 +228,9 @@
       <div class="user-panel hidden" id="userPanel">
         <div class="panel-header">
           <div class="user-info">
-            <div class="user-avatar">
-              <i class="fas fa-user-circle"></i>
+            <div class="user-avatar" id="userAvatar">
+              <img id="userAvatarImg" src="" alt="Foto do usuário" style="display: none;">
+              <i class="fas fa-user-circle" id="userAvatarIcon"></i>
             </div>
             <div class="user-details">
               <h2 id="userName">Nome do Usuário</h2>
@@ -261,6 +265,27 @@
           <div class="panel-tab-content" id="perfilTab">
             <div class="profile-section">
               <h3><i class="fas fa-user-edit"></i> Informações Pessoais</h3>
+              
+              <!-- Seção de Foto do Perfil -->
+              <div class="profile-photo-section">
+                <h4><i class="fas fa-camera"></i> Foto do Perfil</h4>
+                <div class="photo-upload-container">
+                  <div class="current-photo" id="currentPhoto">
+                    <img id="currentPhotoImg" src="" alt="Foto atual" style="display: none;">
+                    <i class="fas fa-user-circle" id="currentPhotoIcon"></i>
+                  </div>
+                  <div class="photo-upload-controls">
+                    <input type="file" id="photoUpload" accept="image/*" onchange="previewPhoto(this)" style="display: none;">
+                    <button type="button" class="btn-upload-photo" onclick="document.getElementById('photoUpload').click()">
+                      <i class="fas fa-camera"></i> Escolher Foto
+                    </button>
+                    <button type="button" class="btn-remove-photo" id="btnRemovePhoto" onclick="removerFoto()" style="display: none;">
+                      <i class="fas fa-trash"></i> Remover
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
               <form onsubmit="atualizarPerfil(event)">
                 <div class="form-row">
                   <div class="form-group">

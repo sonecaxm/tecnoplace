@@ -12,21 +12,56 @@ document.addEventListener('DOMContentLoaded', function() {
     carregarCarrinho();
 });
 
+// Carregar carrinho do localStorage
+function carregarCarrinho() {
+    try {
+        const carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
+        console.log('Carrinho carregado:', carrinho);
+        
+        // Atualizar contador do carrinho
+        const cartCount = document.getElementById('cartCount');
+        if (cartCount) {
+            const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+            cartCount.textContent = totalItens;
+        }
+    } catch (error) {
+        console.error('Erro ao carregar carrinho:', error);
+    }
+}
+
 // Carregar produto baseado no ID da URL
 function carregarProduto() {
+    console.log('Carregando produto...');
+    
     const urlParams = new URLSearchParams(window.location.search);
     const produtoId = urlParams.get('id');
     
+    console.log('ID do produto da URL:', produtoId);
+    
     if (!produtoId) {
+        console.error('Nenhum ID de produto encontrado na URL');
         // Se não há ID, redirecionar para home
         window.location.href = 'index.html';
         return;
     }
     
+    // Verificar se dataManager está disponível
+    if (typeof dataManager === 'undefined') {
+        console.error('dataManager não está disponível');
+        mostrarNotificacao('Erro ao carregar dados do produto', 'error');
+        return;
+    }
+    
+    console.log('dataManager disponível:', dataManager);
+    console.log('Produtos disponíveis:', dataManager.data?.produtos?.length || 0);
+    
     // Buscar produto no banco de dados
-    produtoAtual = dataManager.data.produtos.find(p => p.id == produtoId);
+    produtoAtual = dataManager.getProdutoById(produtoId);
+    
+    console.log('Produto encontrado:', produtoAtual);
     
     if (!produtoAtual) {
+        console.error('Produto não encontrado para ID:', produtoId);
         // Produto não encontrado
         mostrarNotificacao('Produto não encontrado', 'error');
         setTimeout(() => {
@@ -35,8 +70,15 @@ function carregarProduto() {
         return;
     }
     
-    // Buscar vendedor
-    vendedorAtual = dataManager.data.vendedores.find(v => v.id === produtoAtual.vendedorId);
+    // Buscar vendedor - usar o vendedor do produto diretamente
+    vendedorAtual = produtoAtual.vendedor || { 
+        id: 1, 
+        nome: 'Vendedor Padrão', 
+        avaliacao: 4.5, 
+        totalVendas: 100 
+    };
+    
+    console.log('Vendedor encontrado:', vendedorAtual);
     
     // Carregar dados na página
     preencherDadosProduto();
@@ -55,9 +97,9 @@ function preencherDadosProduto() {
     // Preços
     document.getElementById('currentPrice').textContent = `R$ ${produtoAtual.preco.toFixed(2).replace('.', ',')}`;
     
-    if (produtoAtual.precoOriginal && produtoAtual.precoOriginal > produtoAtual.preco) {
-        document.getElementById('originalPrice').textContent = `R$ ${produtoAtual.precoOriginal.toFixed(2).replace('.', ',')}`;
-        const desconto = Math.round(((produtoAtual.precoOriginal - produtoAtual.preco) / produtoAtual.precoOriginal) * 100);
+    if (produtoAtual.precoAntigo && produtoAtual.precoAntigo > produtoAtual.preco) {
+        document.getElementById('originalPrice').textContent = `R$ ${produtoAtual.precoAntigo.toFixed(2).replace('.', ',')}`;
+        const desconto = Math.round(((produtoAtual.precoAntigo - produtoAtual.preco) / produtoAtual.precoAntigo) * 100);
         document.getElementById('discountBadge').textContent = `-${desconto}%`;
     } else {
         document.getElementById('originalPrice').style.display = 'none';
@@ -164,10 +206,9 @@ function trocarImagem(index) {
 function atualizarBreadcrumb() {
     if (!produtoAtual) return;
     
-    const categoria = dataManager.data.categorias.find(c => c.id === produtoAtual.categoriaId);
-    if (categoria) {
-        document.getElementById('breadcrumbCategory').textContent = categoria.nome;
-    }
+    // Usar categoria do produto diretamente
+    const categoriaNome = produtoAtual.categoria || 'Categoria';
+    document.getElementById('breadcrumbCategory').textContent = categoriaNome;
     document.getElementById('breadcrumbProduct').textContent = produtoAtual.nome;
 }
 
@@ -208,15 +249,22 @@ function decreaseQuantity() {
 
 // Adicionar ao carrinho (específico da página de produto)
 function adicionarAoCarrinhoProduto() {
-    if (!produtoAtual) return;
+    if (!produtoAtual) {
+        console.error('Produto atual não está definido');
+        return;
+    }
     
     const quantidade = parseInt(document.getElementById('quantity').value) || 1;
+    
+    console.log('Adicionando produto ao carrinho:', produtoAtual.id, 'quantidade:', quantidade);
     
     // Usar a função do script principal
     if (typeof adicionarAoCarrinho === 'function') {
         adicionarAoCarrinho(produtoAtual.id, quantidade);
+        mostrarNotificacao(`${produtoAtual.nome} adicionado ao carrinho!`, 'success');
     } else {
         // Fallback se a função não estiver disponível
+        console.warn('Função adicionarAoCarrinho não está disponível');
         mostrarNotificacao('Produto adicionado ao carrinho!', 'success');
     }
 }

@@ -959,6 +959,7 @@
   }
 }
 
+@media (max-width: 768px) {
   .chat-layout {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -1007,6 +1008,7 @@
   .mensagem-input-area {
     padding: 15px;
   }
+}
 
 
 .btn-voltar-conversas {
@@ -1105,10 +1107,334 @@
   }
   
   .conversas-lista {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0);
   }
   
   .chat-area {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0);
+  }
+}
+
+/* ===== ESTILOS ESPECÍFICOS PARA CHATGPT ===== */
+
+/* Mensagens do ChatGPT */
+.chatgpt-mensagem .mensagem-balao {
+  background: linear-gradient(135deg, rgba(74, 0, 224, 0.2), rgba(139, 92, 246, 0.2));
+  border: 1px solid rgba(74, 0, 224, 0.3);
+  box-shadow: 0 2px 15px rgba(74, 0, 224, 0.2);
+}
+
+.chatgpt-balao {
+  position: relative;
+}
+
+.chatgpt-balao::before {
+  content: '🤖';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: linear-gradient(135deg, #4A00E0, #8B5CF6);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  box-shadow: 0 2px 8px rgba(74, 0, 224, 0.3);
+}
+
+.mensagem-nome {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.mensagem-nome::before {
+  content: '⚡';
+  font-size: 10px;
+}
+
+/* Indicador de digitação do ChatGPT */
+.chatgpt-digitando {
+  opacity: 0.8;
+}
+
+.chatgpt-digitando-balao {
+  background: linear-gradient(135deg, rgba(74, 0, 224, 0.1), rgba(139, 92, 246, 0.1));
+  border: 1px solid rgba(74, 0, 224, 0.2);
+  padding: 15px 20px;
+  border-radius: 18px;
+  border-bottom-left-radius: 5px;
+  min-width: 60px;
+}
+
+.digitando-pontos {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.digitando-pontos span {
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #4A00E0, #8B5CF6);
+  border-radius: 50%;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.digitando-pontos span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.digitando-pontos span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.digitando-pontos span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+/* Conversa do ChatGPT na lista */
+.conversa-item:has([src*="cerebro-de-conexao"]) {
+  background: linear-gradient(135deg, rgba(74, 0, 224, 0.05), rgba(139, 92, 246, 0.05));
+  border-left: 3px solid #4A00E0;
+}
+
+.conversa-item:has([src*="cerebro-de-conexao"]):hover {
+  background: linear-gradient(135deg, rgba(74, 0, 224, 0.15), rgba(139, 92, 246, 0.15));
+  transform: translateX(8px);
+}
+
+.conversa-item:has([src*="cerebro-de-conexao"]) .conversa-nome {
+  color: #4A00E0;
+  font-weight: 700;
+}
+
+.conversa-item:has([src*="cerebro-de-conexao"]) .conversa-nome::after {
+  content: ' ⚡';
+  font-size: 12px;
+  animation: sparkle 2s infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Header do chat para ChatGPT */
+.chat-header:has(.chat-avatar[src*="cerebro-de-conexao"]) {
+  background: linear-gradient(135deg, rgba(74, 0, 224, 0.1), rgba(139, 92, 246, 0.1));
+  border-bottom: 2px solid #4A00E0;
+}
+
+.chat-header:has(.chat-avatar[src*="cerebro-de-conexao"]) .chat-nome {
+  color: #4A00E0;
+  font-weight: 700;
+}
+
+.chat-header:has(.chat-avatar[src*="cerebro-de-conexao"]) .chat-status {
+  color: #8B5CF6;
+}
+
+.chat-header:has(.chat-avatar[src*="cerebro-de-conexao"]) .chat-status::before {
+  background: linear-gradient(135deg, #4A00E0, #8B5CF6);
+  animation: pulse-ai 2s infinite;
+}
+
+@keyframes pulse-ai {
+  0% {
+    box-shadow: 0 0 0 0 rgba(74, 0, 224, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(74, 0, 224, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 0, 224, 0);
+  }
+}
+
+/* Botão de configuração da API */
+.btn-config-api {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #4A00E0, #8B5CF6);
+  border: none;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 4px 20px rgba(74, 0, 224, 0.4);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.btn-config-api:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(74, 0, 224, 0.6);
+}
+
+.btn-config-api:active {
+  transform: scale(0.95);
+}
+
+/* Modal de configuração */
+.config-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(10px);
+}
+
+.config-modal.active {
+  display: flex;
+}
+
+.config-modal-content {
+  background: rgba(26, 26, 26, 0.95);
+  border: 1px solid rgba(74, 0, 224, 0.3);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.config-modal h3 {
+  color: #4A00E0;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.config-modal p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.config-modal input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid rgba(74, 0, 224, 0.3);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.config-modal input:focus {
+  outline: none;
+  border-color: #4A00E0;
+  box-shadow: 0 0 15px rgba(74, 0, 224, 0.3);
+}
+
+.config-modal input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.config-modal-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.config-modal button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.config-modal .btn-salvar {
+  background: linear-gradient(135deg, #4A00E0, #8B5CF6);
+  color: white;
+}
+
+.config-modal .btn-cancelar {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.config-modal button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividade para elementos do ChatGPT */
+@media (max-width: 768px) {
+  .chatgpt-balao::before {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    top: -6px;
+    right: -6px;
+  }
+  
+  .digitando-pontos span {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .btn-config-api {
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .config-modal-content {
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .config-modal h3 {
+    font-size: 20px;
+  }
+  
+  .config-modal input {
+    padding: 12px;
+    font-size: 14px;
+  }
+  
+  .config-modal button {
+    padding: 10px 20px;
+    font-size: 14px;
   }
 }

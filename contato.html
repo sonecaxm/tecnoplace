@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Tecnoplace</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/produto.css">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" href="https://img.freepik.com/vetores-gratis/vetor-de-icone-de-cerebro-de-conexao-de-tecnologia-de-ia-no-conceito-roxo-de-transformacao-digital_53876-112219.jpg">
+</head>
+<body>
+
+  <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+  <header>
+    <div style="display: flex; align-items: center;">
+      <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
+      <div class="logo" style="color: #4A00E0;">Tecnoplace</div>
+    </div>
+
+    <div class="topnav">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#categorias">Categorias</a>
+        <a href="#anuncios">Meus Anúncios</a>
+        <a href="#mensagens">Mensagens</a>
+        <a href="login.html">Minha Conta</a>
+        
+      </div>
+
+      <div class="search-container">
+        <div class="search-box">
+          <input type="text" placeholder="Buscar peças...">
+          <div class="search-btn">
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+        <i class="fas fa-circle-user"></i>
+      </div>
+    </div>
+  </header>
+
+  <div class="sidebar" id="sidebar">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="#"><i class="fas fa-list"></i> Categorias</a>
+    <a href="#"><i class="fas fa-tag"></i> Meus Anúncios</a>
+    <a href="#"><i class="fas fa-envelope"></i> Mensagens</a>
+    <a href="login.html"><i class="fas fa-user"></i> Minha Conta</a>
+    <a href="contato.html"><i class="fas fa-phone"></i> Contato</a>
+  </div>
+
+  <main class="contact-page">
+    <section class="contact-header">
+      <h1>Fale com o Tecnoplace</h1>
+      <p>Tem dúvidas, sugestões ou precisa de suporte? Envie sua mensagem.</p>
+    </section>
+
+    <section class="contact-grid">
+      <div class="contact-form-card">
+        <h2>Envie uma mensagem</h2>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seu email" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="assunto">Assunto</label>
+              <input type="text" id="assunto" name="assunto" placeholder="Sobre o que é a mensagem?" required>
+            </div>
+            <div class="form-group">
+              <label for="categoria">Categoria</label>
+              <select id="categoria" name="categoria" required>
+                <option value="" disabled selected>Selecione</option>
+                <option value="duvida">Dúvida</option>
+                <option value="suporte">Suporte</option>
+                <option value="sugestao">Sugestão</option>
+                <option value="outros">Outros</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="6" placeholder="Escreva sua mensagem" required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-enviar">Enviar mensagem</button>
+            <span id="contactFeedback" class="form-feedback" aria-live="polite"></span>
+          </div>
+        </form>
+      </div>
+
+      <aside class="contact-info-card">
+        <h2>Outros canais</h2>
+        <ul class="contact-list">
+          <li><i class="fas fa-envelope"></i> suporte@tecnoplace.com</li>
+          <li><i class="fas fa-phone"></i> (12) xxxx-xxxx</li>
+          <li><i class="fab fa-whatsapp"></i> (12) xxxx-xxxx</li>
+
+        </ul>
+        <div class="contact-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Sobre o Tecnoplace</h3>
+        <p>Marketplace especializado em compra e venda de peças de computador, conectando entusiastas e profissionais de tecnologia.</p>
+        <div class="social-links">
+          <a href="#" style="text-decoration: none;"><i class="fab fa-facebook"></i></a>
+          <a href="#" style="text-decoration: none;"><i class="fab fa-instagram"></i></a>
+          <a href="#" style="text-decoration: none;"><i class="fab fa-twitter"></i></a>
+          <a href="#" style="text-decoration: none;"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Links Úteis</h3>
+        <ul class="footer-links">
+          <li><a href="#">Como Vender</a></li>
+          <li><a href="#">Dicas de Segurança</a></li>
+          <li><a href="#">Política de Garantia</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contato</h3>
+        <ul class="footer-links">
+          <li><a href="#">Suporte</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Denunciar Problema</a></li>
+        </ul>
+      </div>
+
+      
+    </div>
+
+    <p class="footer-bottom">&copy; 2025 Tecnoplace - Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    function toggleSidebar() {
+      const isActive = sidebar.classList.contains('active');
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active', !isActive);
+    }
+    function closeSidebar() {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+    
+  </script>
+ 
+ <!-- VLibras -->
+   <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste Produto - Tecnoplace</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/produto.css">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- NAVBAR SIMPLES PARA TESTE -->
+  <header style="background: rgba(26, 26, 26, 0.95); padding: 15px 0; border-bottom: 1px solid rgba(74, 0, 224, 0.3);">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center;">
+      <div style="color: #4A00E0; font-size: 24px; font-weight: 700;">
+        <a href="index.html" style="color: inherit; text-decoration: none;">Tecnoplace</a>
+      </div>
+      <div style="display: flex; gap: 20px; align-items: center;">
+        <a href="index.html" style="color: white; text-decoration: none;">Home</a>
+        <div style="position: relative;">
+          <i class="fas fa-shopping-cart" style="color: white; font-size: 20px; cursor: pointer;"></i>
+          <span id="cartCount" style="position: absolute; top: -8px; right: -8px; background: #4A00E0; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">0</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <div class="container">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <span class="separator">></span>
+      <span id="breadcrumbCategory">Eletrônicos</span>
+      <span class="separator">></span>
+      <span id="breadcrumbProduct">Monitor Gamer</span>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="produto-main">
+    <div class="produto-container">
+      
+      <!-- Seção do Produto -->
+      <div class="produto-section">
+        
+        <!-- Galeria de Imagens -->
+        <div class="produto-gallery">
+          <div class="main-image">
+            <img id="mainProductImage" src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&h=500&fit=crop" alt="Monitor Gamer" />
+            <div class="image-zoom" id="imageZoom">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="thumbnail-images" id="thumbnailImages">
+            <!-- Thumbnails serão carregadas dinamicamente -->
+          </div>
+        </div>
+
+        <!-- Informações do Produto -->
+        <div class="produto-info">
+          <div class="produto-header">
+            <h1 id="productName">Monitor Gamer 27" 144Hz</h1>
+            <div class="produto-rating">
+              <div class="stars" id="productRating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="rating-text" id="ratingText">(4.8) 127 avaliações</span>
+            </div>
+          </div>
+
+          <div class="produto-price">
+            <div class="price-current" id="currentPrice">R$ 1.299,90</div>
+            <div class="price-original" id="originalPrice">R$ 1.599,90</div>
+            <div class="price-discount" id="discountBadge">-19%</div>
+          </div>
+
+          <div class="produto-description">
+            <h3><i class="fas fa-info-circle"></i> Descrição</h3>
+            <p id="productDescription">Monitor gamer de alta performance com resolução Full HD, taxa de atualização de 144Hz e tempo de resposta de 1ms. Perfeito para jogos competitivos e trabalho profissional.</p>
+          </div>
+
+          <div class="produto-specs" id="productSpecs">
+            <h3><i class="fas fa-cogs"></i> Especificações Técnicas</h3>
+            <div class="specs-list" id="specsList">
+              <div class="spec-item">
+                <span class="spec-label">Tamanho:</span>
+                <span class="spec-value">27 polegadas</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Resolução:</span>
+                <span class="spec-value">1920 x 1080 (Full HD)</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Taxa de Atualização:</span>
+                <span class="spec-value">144Hz</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Tempo de Resposta:</span>
+                <span class="spec-value">1ms</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Tipo de Painel:</span>
+                <span class="spec-value">IPS</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="produto-actions">
+            <div class="quantity-selector">
+              <label for="quantity">Quantidade:</label>
+              <div class="quantity-controls">
+                <button class="qty-btn" onclick="decreaseQuantity()">-</button>
+                <input type="number" id="quantity" value="1" min="1" max="10">
+                <button class="qty-btn" onclick="increaseQuantity()">+</button>
+              </div>
+            </div>
+            
+            <div class="action-buttons">
+              <button class="btn-add-cart" onclick="adicionarAoCarrinhoProduto()">
+                <i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho
+              </button>
+              <button class="btn-buy-now" onclick="comprarAgora()">
+                <i class="fas fa-bolt"></i> Comprar Agora
+              </button>
+              <button class="btn-favorite" onclick="toggleFavorite()" id="favoriteBtn">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Informações do Vendedor -->
+          <div class="vendedor-info">
+            <h3><i class="fas fa-store"></i> Vendedor</h3>
+            <div class="vendedor-card">
+              <div class="vendedor-avatar">
+                <i class="fas fa-user-circle"></i>
+              </div>
+              <div class="vendedor-details">
+                <h4 id="vendedorNome">TechStore Premium</h4>
+                <div class="vendedor-rating">
+                  <div class="stars" id="vendedorRating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <span id="vendedorRatingText">(4.9) 1.2k vendas</span>
+                </div>
+                <div class="vendedor-badges">
+                  <span class="badge badge-verified">
+                    <i class="fas fa-check-circle"></i> Verificado
+                  </span>
+                  <span class="badge badge-premium">
+                    <i class="fas fa-crown"></i> Premium
+                  </span>
+                </div>
+              </div>
+              <div class="vendedor-actions">
+                <button class="btn-chat" onclick="abrirChat()">
+                  <i class="fas fa-comments"></i> Chat
+                </button>
+                <button class="btn-perfil" onclick="verPerfilVendedor()">
+                  <i class="fas fa-user"></i> Perfil
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat com Vendedor -->
+      <div class="chat-section" id="chatSection">
+        <div class="chat-container">
+          <div class="chat-header">
+            <div class="chat-vendedor-info">
+              <i class="fas fa-user-circle"></i>
+              <div>
+                <h4 id="chatVendedorNome">TechStore Premium</h4>
+                <span class="status-online">
+                  <i class="fas fa-circle"></i> Online
+                </span>
+              </div>
+            </div>
+            <button class="chat-close" onclick="fecharChat()">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+
+          <div class="chat-messages" id="chatMessages">
+            <div class="message-day">
+              <span>Hoje</span>
+            </div>
+            <div class="message received">
+              <div class="message-content">
+                <p>Olá! Como posso te ajudar com este monitor?</p>
+                <span class="message-time">14:30</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-input">
+            <div class="input-container">
+              <input 
+                type="text" 
+                id="messageInput" 
+                placeholder="Digite sua mensagem..."
+                onkeypress="handleEnterKey(event)"
+              >
+              <button class="btn-send" onclick="enviarMensagem()">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+            <div class="chat-actions">
+              <button class="action-btn" onclick="enviarFoto()">
+                <i class="fas fa-camera"></i>
+              </button>
+              <button class="action-btn" onclick="enviarArquivo()">
+                <i class="fas fa-paperclip"></i>
+              </button>
+              <button class="action-btn" onclick="enviarEmoji()">
+                <i class="fas fa-smile"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal de Zoom da Imagem -->
+  <div class="image-modal" id="imageModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="fecharImagemModal()">&times;</span>
+      <img id="modalImage" src="" alt="Produto">
+      <div class="modal-navigation">
+        <button class="nav-btn prev" onclick="imagemAnterior()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="nav-btn next" onclick="proximaImagem()">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/produto.js"></script>
+  
+  <!-- Script de teste -->
+  <script>
+    // Dados de teste
+    const produtoTeste = {
+      id: 1,
+      nome: "Monitor Gamer 27\" 144Hz",
+      preco: 1299.90,
+      precoAntigo: 1599.90,
+      descricao: "Monitor gamer de alta performance com resolução Full HD, taxa de atualização de 144Hz e tempo de resposta de 1ms. Perfeito para jogos competitivos e trabalho profissional.",
+      imagem: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&h=500&fit=crop",
+      categoria: "Eletrônicos",
+      vendedor: {
+        id: 1,
+        nome: "TechStore Premium",
+        avaliacao: 4.9,
+        totalVendas: 1200
+      },
+      especificacoes: {
+        "Tamanho": "27 polegadas",
+        "Resolução": "1920 x 1080 (Full HD)",
+        "Taxa de Atualização": "144Hz",
+        "Tempo de Resposta": "1ms",
+        "Tipo de Painel": "IPS"
+      },
+      estoque: 10
+    };
+
+    // Simular dataManager
+    window.dataManager = {
+      getProdutoById: function(id) {
+        return produtoTeste;
+      }
+    };
+
+    // Funções de teste
+    function adicionarAoCarrinhoProduto() {
+      alert('Produto adicionado ao carrinho!');
+    }
+
+    function comprarAgora() {
+      alert('Redirecionando para finalização...');
+    }
+
+    function toggleFavorite() {
+      const btn = document.getElementById('favoriteBtn');
+      const icon = btn.querySelector('i');
+      
+      if (icon.classList.contains('far')) {
+        icon.className = 'fas fa-heart';
+        btn.classList.add('active');
+      } else {
+        icon.className = 'far fa-heart';
+        btn.classList.remove('active');
+      }
+    }
+
+    function abrirChat() {
+      document.getElementById('chatSection').classList.add('active');
+    }
+
+    function fecharChat() {
+      document.getElementById('chatSection').classList.remove('active');
+    }
+
+    function verPerfilVendedor() {
+      alert('Perfil do vendedor');
+    }
+
+    function enviarMensagem() {
+      const input = document.getElementById('messageInput');
+      const texto = input.value.trim();
+      
+      if (texto) {
+        const messagesContainer = document.getElementById('chatMessages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'message sent';
+        messageDiv.innerHTML = `
+          <div class="message-content">
+            <p>${texto}</p>
+            <span class="message-time">${new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}</span>
+          </div>
+        `;
+        messagesContainer.appendChild(messageDiv);
+        input.value = '';
+        
+        // Scroll para o final
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }
+    }
+
+    function handleEnterKey(event) {
+      if (event.key === 'Enter') {
+        enviarMensagem();
+      }
+    }
+
+    function enviarFoto() {
+      alert('Funcionalidade de foto em desenvolvimento');
+    }
+
+    function enviarArquivo() {
+      alert('Funcionalidade de arquivo em desenvolvimento');
+    }
+
+    function enviarEmoji() {
+      const emojis = ['😊', '👍', '❤️', '😍', '🔥', '💯', '🎉', '✨'];
+      const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+      document.getElementById('messageInput').value += emoji;
+    }
+
+    function abrirImagemModal() {
+      const modal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      
+      modalImage.src = produtoTeste.imagem;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function fecharImagemModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function imagemAnterior() {
+      alert('Imagem anterior');
+    }
+
+    function proximaImagem() {
+      alert('Próxima imagem');
+    }
+
+    // Inicializar página
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Página de teste carregada!');
+      
+      // Configurar thumbnails
+      const thumbnailContainer = document.getElementById('thumbnailImages');
+      const thumbnail = document.createElement('div');
+      thumbnail.className = 'thumbnail active';
+      thumbnail.innerHTML = `<img src="${produtoTeste.imagem}" alt="Imagem 1">`;
+      thumbnailContainer.appendChild(thumbnail);
+    });
+  </script>
+  
+</body>
+</html>

@@ -60,7 +60,7 @@ const DATABASE = {
         categoriaId: 5,
         preco: 300.00,
         precoAntigo: 489.00,
-        imagem: "img/lets go.jpg",
+        imagem: "img/g5.png",
         imagensAdicionais: [
           "img/foto de monitor.jpg",
           "img/gabinete.jpg",
@@ -94,7 +94,7 @@ const DATABASE = {
         categoriaId: 6,
         preco: 299.90,
         precoAntigo: 399.90,
-        imagem: "img/teclado mecanico.jpg",
+        imagem: "img/eu mesmo.png",
         imagensAdicionais: [
           "img/teclado logo.png",
           "img/razer logo.png"
@@ -102,7 +102,7 @@ const DATABASE = {
         tag: "Promoção",
         vendedor: {
           nome: "Gabriel Freire",
-          foto: "https://via.placeholder.com/50x50/333/FFF?text=GF",
+          foto: "img/Foto Gabriel.jpg",
           rating: 4.8,
           avaliacoes: 89
         },
@@ -120,16 +120,16 @@ const DATABASE = {
       },
       {
         id: 3,
-        nome: "Mouse Gamer Profissional 12000 DPI",
+        nome: "Mouse sem fio Logitech MX Master 3S",
         categoria: "perifericos",
         categoriaId: 6,
-        preco: 199.90,
-        precoAntigo: 249.90,
-        imagem: "https://via.placeholder.com/300x300/06B6D4/FFFFFF?text=Mouse+Gamer",
+        preco: 390.90,
+        precoAntigo: 559.90,
+        imagem: "img/TAZINHO.png",
         tag: "Mais Vendido",
         vendedor: {
           nome: "Felipe Moura Souza",
-          foto: "https://via.placeholder.com/50x50/333/FFF?text=FM",
+          foto: "img/Foto felipe.jpg",
           rating: 4.7,
           avaliacoes: 156
         },
@@ -141,22 +141,22 @@ const DATABASE = {
           "Iluminação": "RGB",
           "Conectividade": "USB 2.0"
         },
-        estoque: 31,
+        estoque: 100,
         promocao: true,
         destaque: true
       },
       {
         id: 4,
-        nome: "Headset Gamer 7.1 Surround",
+        nome: "Fone de Ouvido Audio Technica ATH-M50x",
         categoria: "perifericos",
         categoriaId: 6,
         preco: 159.90,
         precoAntigo: 229.90,
-        imagem: "https://via.placeholder.com/300x300/EF4444/FFFFFF?text=Headset+7.1",
+        imagem: "img/fone.jpg",
         tag: "Oferta",
         vendedor: {
           nome: "Plínio Sanchez Mendes",
-          foto: "https://via.placeholder.com/50x50/333/FFF?text=PM",
+          foto: "img/foto Plínio.jpg",
           rating: 4.3,
           avaliacoes: 78
         },
@@ -290,6 +290,7 @@ const DATABASE = {
         nome: "João Silva",
         email: "joao@email.com",
         senha: "123456", // Em produção, seria hash
+        foto: null, // Foto do usuário em base64
         carrinho: [],
         pedidos: [],
         endereco: {

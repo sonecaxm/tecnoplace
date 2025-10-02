@@ -23,10 +23,10 @@
     <div class="topnav">
       <div class="nav-links">
         <a class="active" href="index.html">Home</a>
-        <a href="#categorias">Categorias</a>
-        <a href="meus-anuncios.html">Meus Anúncios</a>
+       <a href="meus-anuncios.html">Meus Anúncios</a>
         <a href="mensagens.html">Mensagens</a>
         <a href="login.html">Minha Conta</a>
+        <a href="sobre-nos.html">Sobre Nós</a>
       </div>
           
       <div class="search-container">
@@ -40,7 +40,10 @@
           <i class="fas fa-shopping-cart" onclick="toggleCart()"></i>
           <span class="cart-count" id="cartCount">0</span>
         </div>
-        <i class="fas fa-circle-user" onclick="toggleUserMenu()"></i>
+        <div class="user-avatar-header" id="userAvatarHeader" onclick="toggleUserMenu()">
+          <img id="userAvatarHeaderImg" src="" alt="Foto do usuário" style="display: none;">
+          <i class="fas fa-circle-user" id="userAvatarHeaderIcon"></i>
+        </div>
       </div>
     </div>
   </header>
@@ -52,18 +55,19 @@
     <a href="meus-anuncios.html"><i class="fas fa-tag"></i> Meus Anúncios</a>
     <a href="mensagens.html"><i class="fas fa-envelope"></i> Mensagens</a>
     <a href="login.html"><i class="fas fa-user"></i> Minha Conta</a>
+    <a href="sobre-nos.html"><i class="fas fa-users"></i> Sobre Nós</a>
   </div>
 
   <!-- Banner Promocional Rotativo -->
   <div class="banner-container">
     <div class="banner-slide active">
-      <img src="img/Black November Ofertas De Novembro Moderno Azul Branco e Preto Banner Mercado Shops .png" alt="Banner 1">
+      <img src="img/frete.png" alt="Banner 1">
     </div>
     <div class="banner-slide">
-      <img src="img/tazinho.png" alt="Banner 2">
+      <img src="img/Capa de Email Promoção da Semana Moderno Preto e Amarelo.png" alt="Banner 2">
     </div>
     <div class="banner-slide">
-      <img src="img/op.png" alt="Banner 3">
+      <img src="img/Cabeçalho de e-mail Promoção Black Friday Moderno Preto e Dourado.jpg" alt="Banner 3">
     </div>
     <div class="banner-indicators">
       <span class="indicator active" onclick="currentSlide(1)"></span>
@@ -74,7 +78,7 @@
 
   <!-- Produtos em Promoção -->
   <section class="produtos-destaque" id="promocoes">
-    <h2 class="section-title">Monitores em até 70% Off</h2>
+    <h2 class="section-title">Produtos em até 70% Off</h2>
     <div class="produtos-grid" id="produtosPromocao">
       <!-- Produtos serão carregados dinamicamente -->
     </div>
@@ -179,7 +183,7 @@
       
       <div class="feedback-item">
         <div class="feedback-avatar">
-          <img src="img/nikole.webp" alt="Nikole">
+          <img src="img/jonatas.jpg" alt="Nikole">
         </div>
         <div class="feedback-content">
           <div class="feedback-stars">
@@ -190,14 +194,14 @@
             <i class="fas fa-star"></i>
           </div>
           <p class="feedback-text">"Interface muito intuitiva e segura! Comprei minha placa de vídeo e o processo foi super tranquilo. 5 estrelas!"</p>
-          <h4 class="feedback-name">Deputada Nikole</h4>
-          <span class="feedback-location">Brasília, DF</span>
+          <h4 class="feedback-name">Jonatas Cruz</h4>
+          <span class="feedback-location">Pindamonhangaba, SP</span>
         </div>
       </div>
       
       <div class="feedback-item">
         <div class="feedback-avatar">
-          <img src="img/miguel mesmo.png" alt="Miguel">
+          <img src="img/danilo.png" alt="Miguel">
         </div>
         <div class="feedback-content">
           <div class="feedback-stars">
@@ -208,8 +212,8 @@
             <i class="fas fa-star"></i>
           </div>
           <p class="feedback-text">"Frete grátis e entrega no mesmo dia! Vendedor muito atencioso e produto exatamente como anunciado. Top demais!"</p>
-          <h4 class="feedback-name">Miguel Silva</h4>
-          <span class="feedback-location">Curitiba, PR</span>
+          <h4 class="feedback-name">Danilo Passos</h4>
+          <span class="feedback-location">Taubaté,SP</span>
         </div>
       </div>
     </div>
@@ -287,7 +291,7 @@
           <li><a href="#home">Home</a></li>
           <li><a href="#categorias">Categorias</a></li>
           <li><a href="#sobre">Sobre Nós</a></li>
-          <li><a href="#contato">Contato</a></li>
+          <li><a href="contato.html">Contato</a></li>
         </ul>
       </div>
       <div class="footer-section">
@@ -302,7 +306,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2024 Tecnoplace. Todos os direitos reservados.</p>
+      <p>&copy; 2025 Tecnoplace. Todos os direitos reservados.</p>
     </div>
   </footer>
 

@@ -1,5 +1,7 @@
 // Script principal do Tecnoplace
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Tecnoplace inicializando...');
+    console.log('dataManager disponível:', typeof dataManager !== 'undefined');
     inicializarSite();
 });
 
@@ -9,6 +11,7 @@ function inicializarSite() {
     atualizarContadorCarrinho();
     inicializarBanner();
     configurarEventos();
+    atualizarFotoUsuarioHeader();
 }
 
 // Configurar eventos
@@ -109,10 +112,15 @@ function closeSidebar() {
 
 // Funções de Produtos
 function carregarProdutosPromocao() {
+    console.log('Carregando produtos em promoção...');
     const container = document.getElementById('produtosPromocao');
-    if (!container) return;
+    if (!container) {
+        console.error('Container produtosPromocao não encontrado');
+        return;
+    }
 
     const produtosPromocao = dataManager.getProdutosPromocao().slice(0, 4);
+    console.log('Produtos em promoção encontrados:', produtosPromocao.length);
     container.innerHTML = '';
 
     produtosPromocao.forEach(produto => {
@@ -122,10 +130,15 @@ function carregarProdutosPromocao() {
 }
 
 function carregarProdutosDestaque() {
+    console.log('Carregando produtos em destaque...');
     const container = document.getElementById('produtosDestaque');
-    if (!container) return;
+    if (!container) {
+        console.error('Container produtosDestaque não encontrado');
+        return;
+    }
 
     const produtosDestaque = dataManager.getProdutosDestaque().slice(0, 4);
+    console.log('Produtos em destaque encontrados:', produtosDestaque.length);
     container.innerHTML = '';
 
     produtosDestaque.forEach(produto => {
@@ -396,59 +409,74 @@ function finalizarCompra() {
 
 // Modal de Produto
 function abrirModalProduto(produtoId) {
+    console.log('Abrindo modal para produto ID:', produtoId); // Debug
+    
     const produto = dataManager.getProdutoById(produtoId);
-    if (!produto) return;
+    console.log('Produto encontrado:', produto); // Debug
+    
+    if (!produto) {
+        console.error('Produto não encontrado para ID:', produtoId);
+        return;
+    }
 
     const modal = document.getElementById('productModal');
     const modalBody = document.getElementById('productModalBody');
     
-    if (!modal || !modalBody) return;
+    console.log('Modal elements:', { modal, modalBody }); // Debug
+    
+    if (!modal || !modalBody) {
+        console.error('Elementos do modal não encontrados');
+        return;
+    }
 
+    // Criar conteúdo do modal com melhor estrutura
     modalBody.innerHTML = `
         <div class="product-detail">
             <div class="product-detail-image">
-                <img src="${produto.imagem}" alt="${produto.nome}">
+                <img src="${produto.imagem}" alt="${produto.nome}" style="width: 100%; height: auto; border-radius: 10px;">
             </div>
             <div class="product-detail-info">
-                <h2>${produto.nome}</h2>
-                <div class="product-detail-price">
-                    <span class="preco-atual">R$ ${produto.preco.toFixed(2).replace('.', ',')}</span>
-                    ${produto.precoAntigo ? `<span class="preco-antigo">R$ ${produto.precoAntigo.toFixed(2).replace('.', ',')}</span>` : ''}
+                <h2 style="color: #ffffff; margin-bottom: 20px; font-size: 28px;">${produto.nome}</h2>
+                <div class="product-detail-price" style="margin-bottom: 20px;">
+                    <span class="preco-atual" style="font-size: 32px; font-weight: 700; color: #4A00E0;">R$ ${produto.preco.toFixed(2).replace('.', ',')}</span>
+                    ${produto.precoAntigo ? `<span class="preco-antigo" style="font-size: 16px; color: #999; text-decoration: line-through; margin-left: 10px;">R$ ${produto.precoAntigo.toFixed(2).replace('.', ',')}</span>` : ''}
                 </div>
-                <div class="vendedor-info">
-                    <img src="${produto.vendedor.foto}" alt="${produto.vendedor.nome}" class="vendedor-foto">
+                <div class="vendedor-info" style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
+                    <img src="${produto.vendedor.foto}" alt="${produto.vendedor.nome}" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
                     <div class="vendedor-detalhes">
-                        <span class="vendedor-nome">${produto.vendedor.nome}</span>
-                        <div class="produto-rating">${gerarEstrelas(produto.vendedor.rating)} (${produto.vendedor.avaliacoes} avaliações)</div>
+                        <div class="vendedor-nome" style="font-size: 16px; font-weight: 500; color: #ffffff;">${produto.vendedor.nome}</div>
+                        <div class="produto-rating" style="color: #FFD700; font-size: 14px;">${gerarEstrelas(produto.vendedor.rating)} (${produto.vendedor.avaliacoes} avaliações)</div>
                     </div>
                 </div>
-                <div class="product-detail-description">
-                    <p>${produto.descricao}</p>
+                <div class="product-detail-description" style="margin-bottom: 20px;">
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6; font-size: 16px;">${produto.descricao}</p>
                 </div>
                 ${produto.especificacoes ? `
-                    <div class="product-specs">
-                        <h4>Especificações Técnicas</h4>
+                    <div class="product-specs" style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <h4 style="color: #ffffff; margin-bottom: 15px; font-size: 18px;">Especificações Técnicas</h4>
                         ${Object.entries(produto.especificacoes).map(([key, value]) => `
-                            <div class="spec-item">
-                                <span class="spec-label">${key}:</span>
-                                <span class="spec-value">${value}</span>
+                            <div class="spec-item" style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                <span class="spec-label" style="color: rgba(255, 255, 255, 0.7);">${key}:</span>
+                                <span class="spec-value" style="color: #ffffff; font-weight: 500;">${value}</span>
                             </div>
                         `).join('')}
                     </div>
                 ` : ''}
                 <div class="product-actions">
-                    <button class="btn-comprar" onclick="adicionarAoCarrinho(${produto.id}); closeProductModal();" style="width: 100%; margin-bottom: 10px;">
-                        <i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho
+                    <button class="btn-comprar" onclick="adicionarAoCarrinho(${produto.id}); closeProductModal();" style="width: 100%; margin-bottom: 10px; background: linear-gradient(135deg, #4A00E0, #8B5CF6); color: white; border: none; padding: 15px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                        <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Adicionar ao Carrinho
                     </button>
-                    <div class="product-stock">
-                        <i class="fas fa-box"></i> ${produto.estoque} unidades em estoque
+                    <div class="product-stock" style="color: rgba(255, 255, 255, 0.7); font-size: 14px; text-align: center;">
+                        <i class="fas fa-box" style="margin-right: 5px;"></i> ${produto.estoque} unidades em estoque
                     </div>
                 </div>
             </div>
         </div>
     `;
 
+    // Mostrar o modal
     modal.classList.add('active');
+    console.log('Modal ativado'); // Debug
 }
 
 function closeProductModal() {
@@ -606,4 +634,21 @@ function implementarLazyLoading() {
 
 // Inicializar lazy loading quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', implementarLazyLoading);
+
+// ===== FUNÇÕES DE FOTO DO USUÁRIO =====
+
+// Atualizar foto do usuário no header
+function atualizarFotoUsuarioHeader() {
+    const usuario = dataManager.getUsuarioLogado();
+    if (usuario && usuario.foto) {
+        const userAvatarHeaderImg = document.getElementById('userAvatarHeaderImg');
+        const userAvatarHeaderIcon = document.getElementById('userAvatarHeaderIcon');
+        
+        if (userAvatarHeaderImg && userAvatarHeaderIcon) {
+            userAvatarHeaderImg.src = usuario.foto;
+            userAvatarHeaderImg.style.display = 'block';
+            userAvatarHeaderIcon.style.display = 'none';
+        }
+    }
+}
 

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nós - Tecnoplace</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" href="https://img.freepik.com/vetores-gratis/vetor-de-icone-de-cerebro-de-conexao-de-tecnologia-de-ia-no-conceito-roxo-de-transformacao-digital_53876-112219.jpg">
+  <style>
+    .sobre-nos-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    .sobre-nos-hero {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .sobre-nos-hero h1 {
+      font-size: 3rem;
+      color: #4A00E0;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    
+    .sobre-nos-hero p {
+      font-size: 1.2rem;
+      color: white;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .equipe-section {
+      margin-bottom: 80px;
+    }
+    
+    .equipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+    }
+    
+    .membro-card {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .membro-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .membro-foto {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      overflow: hidden;
+      border: 4px solid #4A00E0;
+    }
+    
+    .membro-foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .membro-nome {
+      font-size: 1.5rem;
+      color: #4A00E0;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    
+    .membro-cargo {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+    
+    .membro-descricao {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .membro-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    
+    .skill-tag {
+      background: linear-gradient(135deg, #4A00E0, #8E2DE2);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .missao-section {
+      background: linear-gradient(135deg, #4A00E0, #8E2DE2);
+      color: white;
+      padding: 60px 40px;
+      border-radius: 20px;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .missao-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+    
+    .missao-section p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .valores-section {
+      margin-bottom: 60px;
+    }
+    
+    .valores-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .valor-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      border-left: 5px solid #4A00E0;
+    }
+    
+    .valor-icon {
+      font-size: 3rem;
+      color: #4A00E0;
+      margin-bottom: 20px;
+    }
+    
+    .valor-card h3 {
+      font-size: 1.3rem;
+      color: #4A00E0;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    
+    .valor-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      color: #4A00E0;
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    
+    .section-subtitle {
+      font-size: 1.2rem;
+      color:white;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    @media (max-width: 768px) {
+      .sobre-nos-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .equipe-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      
+      .missao-section {
+        padding: 40px 20px;
+      }
+      
+      .missao-section h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+  <!-- NAVBAR -->
+  <header>
+    <div style="display: flex; align-items: center;">
+      <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
+      <div class="logo" style="color: #4A00E0;">Tecnoplace</div>
+    </div>
+    
+    <div class="topnav">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="categorias.html">Categorias</a>
+        <a href="meus-anuncios.html">Meus Anúncios</a>
+        <a href="mensagens.html">Mensagens</a>
+        <a href="login.html">Minha Conta</a>
+        <a class="active" href="sobre-nos.html">Sobre Nós</a>
+      </div>
+          
+      <div class="search-container">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Buscar peças...">
+          <div class="search-btn" onclick="buscarProdutos()">
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+        <div class="cart-container">
+          <i class="fas fa-shopping-cart" onclick="toggleCart()"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </div>
+        <i class="fas fa-circle-user" onclick="toggleUserMenu()"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="index.html#categorias"><i class="fas fa-list"></i> Categorias</a>
+    <a href="meus-anuncios.html"><i class="fas fa-tag"></i> Meus Anúncios</a>
+    <a href="mensagens.html"><i class="fas fa-envelope"></i> Mensagens</a>
+    <a href="login.html"><i class="fas fa-user"></i> Minha Conta</a>
+    <a href="sobre-nos.html"><i class="fas fa-users"></i> Sobre Nós</a>
+  </div>
+
+  <!-- Conteúdo Principal -->
+  <div class="sobre-nos-container">
+    <!-- Hero Section -->
+    <div class="sobre-nos-hero">
+      <h1>Conheça Nossa Equipe</h1>
+      <p>Somos uma equipe apaixonada por tecnologia, dedicada a criar a melhor experiência de compra de peças de computador do Brasil. Conheça as pessoas por trás do Tecnoplace!</p>
+    </div>
+
+    <!-- Seção da Equipe -->
+    <div class="equipe-section">
+      <h2 class="section-title">Nossa Equipe</h2>
+      <p class="section-subtitle">Os profissionais que fazem o Tecnoplace acontecer</p>
+      
+      <div class="equipe-grid">
+        <!-- Membro 1 -->
+        <div class="membro-card">
+          <div class="membro-foto">
+            <img src="img/jonatas.jpg" alt="Jonatas Siqueira">
+          </div>
+          <h3 class="membro-nome">Jonatas Siqueira</h3>
+          <p class="membro-cargo">CEO & Fundador</p>
+          <p class="membro-descricao">Visionário e estrategista, Jonatas lidera a empresa com foco em inovação e crescimento sustentável. Sua paixão por tecnologia e negócios impulsiona o Tecnoplace rumo ao futuro.</p>
+          <div class="membro-skills">
+            <span class="skill-tag">Liderança</span>
+            <span class="skill-tag">Estratégia</span>
+            <span class="skill-tag">Inovação</span>
+          </div>
+        </div>
+
+        <!-- Membro 2 -->
+        <div class="membro-card">
+          <div class="membro-foto">
+            <img src="img/Foto Gabriel.jpg" alt="Gabriel Freire">
+          </div>
+          <h3 class="membro-nome">Gabriel Freire</h3>
+          <p class="membro-cargo">Analista de Suporte Técnico & Fundador</p>
+          <p class="membro-descricao">Especialista em desenvolvimento web e mobile, Gabriel é responsável por toda a arquitetura técnica da plataforma, garantindo performance e segurança para nossos usuários.</p>
+          <div class="membro-skills">
+            <span class="skill-tag">Atendimento</span>
+            <span class="skill-tag">Comunicação</span>
+            <span class="skill-tag">Relacionamento</span>
+          </div>
+        </div>
+
+        <!-- Membro 3 -->
+        <div class="membro-card">
+          <div class="membro-foto">
+            <img src="img/foto Plínio.jpg" alt="Plínio Sanchez">
+          </div>
+          <h3 class="membro-nome">Plínio Sanchez</h3>
+          <p class="membro-cargo">Tech Lead & Cofundador</p>
+          <p class="membro-descricao">Criativo e analítico, Plínio desenvolve estratégias de marketing que conectam nossa marca com o público certo, sempre buscando inovação e resultados mensuráveis.</p>
+          <div class="membro-skills">
+            <span class="skill-tag">Suporte</span>
+            <span class="skill-tag">Criatividade</span>
+            <span class="skill-tag">Analytics</span>
+          </div>
+        </div>
+
+        <!-- Membro 4 -->
+        <div class="membro-card">
+          <div class="membro-foto">
+            <img src="img/Foto Felipe.jpg" alt="felipe">
+          </div>
+          <h3 class="membro-nome">Felipe Moura</h3>
+          <p class="membro-cargo">Gerente de Produto & Cofundador</p>
+          <p class="membro-descricao">Felipe é o Gerente de Produto da empresa, responsável por liderar o desenvolvimento e a evolução dos nossos produtos tecnológicos. Com uma visão estratégica e foco nas necessidades dos clientes.</p>
+          <div class="membro-skills">
+            <span class="skill-tag">Analista</span>
+            <span class="skill-tag">Liderança</span>
+            <span class="skill-tag">Comprometimento</span>
+          </div>
+        </div>
+        <div class="membro-card">
+            <div class="membro-foto">
+              <img src="img/danilo.png" alt="passos">
+            </div>
+            <h3 class="membro-nome">Danilo Passos</h3>
+            <p class="membro-cargo">Professor orientador</p>
+            <p class="membro-descricao">Danilo é o professor orientador dos nossos membros, responsável por guiar e orientar os nossos membros na criação e desenvolvimento do nosso projeto.</p>
+            
+          </div>
+      </div>
+    </div>
+
+    <!-- Seção de Missão -->
+    <div class="missao-section">
+      <h2>Nossa Missão</h2>
+      <p>Conectar pessoas através da tecnologia, oferecendo a melhor plataforma de marketplace para peças de computador do Brasil. Queremos democratizar o acesso à tecnologia de qualidade, facilitando a vida de quem monta, atualiza ou conserta computadores, sempre com transparência, segurança e excelência no atendimento.</p>
+    </div>
+
+    <!-- Seção de Valores -->
+    <div class="valores-section">
+      <h2 class="section-title">Nossos Valores</h2>
+      <p class="section-subtitle">Os princípios que guiam nosso trabalho diário</p>
+      
+      <div class="valores-grid">
+        <div class="valor-card">
+          <div class="valor-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Segurança</h3>
+          <p>Garantimos transações seguras e proteção total dos dados dos nossos usuários, com os mais altos padrões de segurança da indústria.</p>
+        </div>
+        
+        <div class="valor-card">
+          <div class="valor-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3>Transparência</h3>
+          <p>Mantemos comunicação clara e honesta com todos os stakeholders, promovendo confiança e relacionamentos duradouros.</p>
+        </div>
+        
+        <div class="valor-card">
+          <div class="valor-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h3>Inovação</h3>
+          <p>Buscamos constantemente novas tecnologias e soluções para melhorar a experiência dos nossos usuários e vendedores.</p>
+        </div>
+        
+        <div class="valor-card">
+          <div class="valor-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Paixão</h3>
+          <p>Somos apaixonados por tecnologia e acreditamos no poder transformador que ela tem na vida das pessoas.</p>
+        </div>
+        
+        <div class="valor-card">
+          <div class="valor-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Comunidade</h3>
+          <p>Construímos uma comunidade forte e engajada, onde vendedores e compradores se conectam de forma significativa.</p>
+        </div>
+        
+        <div class="valor-card">
+          <div class="valor-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Excelência</h3>
+          <p>Buscamos sempre a excelência em tudo que fazemos, desde o desenvolvimento até o atendimento ao cliente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Sobre o Tecnoplace</h3>
+        <p>Marketplace especializado em peças de computador e tecnologia. Conectamos vendedores e compradores de forma segura e confiável.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Links Úteis</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#categorias">Categorias</a></li>
+          <li><a href="sobre-nos.html">Sobre Nós</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contato</h3>
+        <p><i class="fas fa-envelope"></i> tecnoplaceoficialbr@gmail.com</p>
+        <p><i class="fas fa-phone"></i> (xx) xxxx-xxxx</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Tecnoplace. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+  
+  <!-- VLibras -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  
+</body>
+</html>
